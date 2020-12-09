@@ -1,0 +1,197 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* pages/myQuestionsReply/myQuestionsReply.wxss */
+.uploadPictures.data-v-273048a6 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	padding: 0 30rpx;
+}
+/* .van-uploader__wrapper {
+	width: 690rpx !important;
+}
+
+.van-uploader__preview {
+	margin: 0 16rpx 16rpx 0 !important;
+}
+
+.van-uploader__preview:nth-child(4n) {
+	margin: 0 0 16rpx 0 !important;
+}
+
+.van-uploader__upload {
+	margin: 0 0 16rpx 0 !important;
+} */
+.popupBtn.data-v-273048a6 {
+	margin: 50rpx auto;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.popupBtn .u-button.data-v-273048a6 {
+	width: 600rpx;
+	height: 100rpx;
+	padding: 0;
+	font-size: 36rpx;
+	font-weight: bold;
+}
+

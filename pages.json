@@ -1,0 +1,57 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "中课帮"
+			}
+		},
+		{
+			"path": "pages/questionAnswer/questionAnswer",
+			"style": {
+				"navigationBarTitleText": "中题帮"
+			}
+		},
+		{
+			"path": "pages/answerRecord/answerRecord",
+			"style": {
+				"navigationBarTitleText": "我的问题"
+			}
+		},
+		{
+			"path": "pages/myQuestions/myQuestions",
+			"style": {
+				"navigationBarTitleText": "我的提问"
+			}
+		},
+		{
+			"path": "pages/myQuestionsReply/myQuestionsReply",
+			"style": {
+				"navigationBarTitleText": "我的提问"
+			}
+		},
+		{
+			"path": "pages/logs/logs",
+			"style": {
+				"navigationBarTitleText": "查看启动日志"
+			}
+		},
+		{
+			"path": "pages/huoDong/huoDong",
+			"style": {
+				"navigationBarTitleText": "最新活动"
+			}
+		}
+	],
+	"style": "v2",
+	"sitemapLocation": "sitemap.json",
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "Weixin",
+		"navigationBarTextStyle": "black"
+	},
+	"subPackages": []
+}

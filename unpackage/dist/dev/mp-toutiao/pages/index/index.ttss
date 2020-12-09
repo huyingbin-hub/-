@@ -1,0 +1,255 @@
+
+.head-module.data-v-57280228 {
+	margin-top: 30rpx;
+	padding: 0 30rpx;
+	height: 100rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.head-login.data-v-57280228 {}
+.headLogin-item.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.headLogin-img.data-v-57280228 {
+	width: 80rpx;
+	height: 80rpx;
+	margin-right: 16rpx;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+}
+.noLogin button.data-v-57280228::after {
+	border: none;
+}
+.noLogin.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	        align-items: flex-start;
+	height: 80rpx;
+}
+.noLogin-text.data-v-57280228 {
+	font-size: 28rpx;
+}
+.usernoLogin.data-v-57280228 {
+	width: 100rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	font-size: 24rpx;
+}
+.noLoginBtn.data-v-57280228 {
+	width: 150rpx !important;
+	height: 60rpx;
+	background: #ffffff;
+	-webkit-border-radius: 5rpx;
+	        border-radius: 5rpx;
+	padding: 0 !important;
+	margin-top: -3rpx;
+	color: #252525;
+	line-height: 60rpx;
+	font-size: 28rpx;
+	font-weight: 400;
+	text-align: left;
+}
+.leftContainer.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.leftContainer-history.data-v-57280228 {
+	height: 70rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin-right: 140rpx;
+}
+.historyText.data-v-57280228 {
+	font-size: 24rpx;
+}
+.historyImg.data-v-57280228 {
+	width: 38rpx;
+	height: 38rpx;
+}
+
+/*切换科目*/
+.switchLeft.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.switchLeft-title.data-v-57280228 {
+	font-size: 26rpx;
+	color: #252525;
+	text-align: right;
+}
+.switchLeft-content.data-v-57280228 {
+	height: 70rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	text-align: right;
+	font-size: 24rpx;
+}
+.switch-subject.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.switchImg.data-v-57280228 {
+	width: 20rpx;
+	height: 26rpx;
+	margin-left: 20rpx;
+}
+.five.data-v-57280228 {
+	max-width: 120rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/*答疑解惑*/
+.photograph.data-v-57280228 {
+	margin-top: 180rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.photographImg.data-v-57280228 {
+	width: 444rpx;
+	height: 444rpx;
+}
+.historyFile.data-v-57280228 {
+	margin-top: 60rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	font-size: 26rpx;
+	color: #0998FF;
+	font-weight: 400;
+}
+
+/*上传图片*/
+.uploadPictures.data-v-57280228 {
+	padding: 0 30rpx;
+	margin-top: 20rpx;
+}
+
+/*手机号弹窗*/
+.phone-module.data-v-57280228 {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #000;
+	opacity: 0.5;
+	overflow: hidden;
+	z-index: 9000;
+	color: #fff;
+}
+.module-write.data-v-57280228 {
+	width: 520rpx;
+	height: 300rpx;
+	position: fixed;
+	z-index: 9500;
+	left: 115rpx;
+	top: 300rpx;
+	background-color: #fff;
+	-webkit-border-radius: 25rpx;
+	        border-radius: 25rpx;
+}
+.moduleWrite-text.data-v-57280228 {
+	font-size: 26rpx;
+	color: #252525;
+	text-align: center;
+	margin-top: 80rpx;
+}
+.moduleWrite-button.data-v-57280228 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-top: 100rpx;
+	border-top: 1px solid #F5F6F8;
+}
+.moduleWrite-btn.data-v-57280228 {
+	background-color: #fff;
+	-webkit-border-radius: 25rpx;
+	        border-radius: 25rpx;
+}
+.colorQu.data-v-57280228 {
+	color: #94918F;
+}
+.colorQue.data-v-57280228 {
+	color: #ee0a24;
+}
+
+/*双十一活动*/
+.shuangActivity.data-v-57280228 {
+	margin-top: 150rpx;
+	padding: 0 30rpx;
+	height: 210rpx;
+}
+.shuangActivity image.data-v-57280228 {
+	width: 100%;
+	height: 100%;
+}
+

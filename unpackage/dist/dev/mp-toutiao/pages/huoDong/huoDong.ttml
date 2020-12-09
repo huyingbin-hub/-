@@ -1,0 +1,1 @@
+<web-view src="{{url}}" data-event-opts="{{[['message',[['getMsgFromWeb',['$event']]]],['load',[['onWebLoad',['$event']]]],['error',[['onWebError',['$event']]]]]}}" bindmessage="__e" bindload="__e" binderror="__e" class="data-v-213db054"></web-view>

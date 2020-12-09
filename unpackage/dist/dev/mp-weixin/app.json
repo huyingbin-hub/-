@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/questionAnswer/questionAnswer",
+    "pages/answerRecord/answerRecord",
+    "pages/myQuestions/myQuestions",
+    "pages/myQuestionsReply/myQuestionsReply",
+    "pages/logs/logs",
+    "pages/huoDong/huoDong"
+  ],
+  "subPackages": [],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "plugins": {},
+  "usingComponents": {},
+  "sitemapLocation": "sitemap93.json"
+}

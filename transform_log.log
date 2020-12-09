@@ -1,0 +1,183 @@
+
+Warning： 找不到package.json文件(不影响转换，无视这条)
+
+miniprogram to uni-app 转换日志
+
+---基本信息---
+时间: 2020-12-03 09:07:07
+语言: Javascript
+转换模式: Hbuilder X
+是否转换wxs文件: false
+
+---小程序基本信息---
+name: 中课答疑
+version: 
+description: 
+appid: wx266f297b4b45d66a
+projectname: 
+compileType: miniprogram
+author: 
+
+---目录信息---
+sourceFolder: F:/ZJ/中课答疑/classAnswer
+targetFolder: F:/ZJ/中课答疑/classAnswer_uni
+outputFolder: F:/ZJ/中课答疑/classAnswer_uni
+miniprogramRoot: F:/ZJ/中课答疑/classAnswer
+
+---日志信息---
+Convert wxs file ..\classAnswer_uni\vant\calendar\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\calendar\utils.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\checkbox\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\dropdown-menu\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\field\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\picker-column\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\progress\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\share-sheet\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\share-sheet\options.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\slider\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\sticky\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\tabs\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\tree-select\index.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\wxs\array.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\wxs\bem.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\wxs\add-unit.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\wxs\memoize.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\wxs\object.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\wxs\utils.wxs success!
+Convert wxs file ..\classAnswer_uni\vant\calendar\components\month\index.wxs success!
+Convert App.vue success!
+Convert component config.js success!
+Convert component Services\services.js success!
+Convert component utils\md5.js success!
+Convert component utils\request.js success!
+Convert component utils\util.js success!
+Convert pages\answerRecord\answerRecord.vue success!
+Convert pages\huoDong\huoDong.vue success!
+Convert pages\index\index.vue success!
+Convert pages\logs\logs.vue success!
+Convert pages\myQuestions\myQuestions.vue success!
+Convert pages\myQuestionsReply\myQuestionsReply.vue success!
+Convert pages\questionAnswer\questionAnswer.vue success!
+Convert vant\action-sheet\index.vue success!
+Convert vant\area\index.vue success!
+Convert component vant\calendar\calendar.vue.wxml success!
+Convert vant\calendar\index.vue success!
+Convert component vant\calendar\utils.js success!
+Convert vant\card\index.vue success!
+Convert vant\button\index.vue success!
+Convert vant\cell\index.vue success!
+Convert vant\cell-group\index.vue success!
+Convert component vant\circle\canvas.js success!
+Convert vant\circle\index.vue success!
+Convert vant\checkbox\index.vue success!
+Convert vant\col\index.vue success!
+Convert vant\collapse\index.vue success!
+Convert vant\collapse-item\index.vue success!
+Convert component vant\common\color.js success!
+Convert component vant\common\component.js success!
+Convert component vant\common\utils.js success!
+Convert component vant\common\version.js success!
+Convert vant\checkbox-group\index.vue success!
+Convert vant\count-down\index.vue success!
+Convert component vant\count-down\utils.js success!
+Convert vant\divider\index.vue success!
+Convert vant\definitions\index.js success!
+[Error] targetFilePath: F:\ZJ\中课答疑\classAnswer_uni\vant\definitions\index.js 内容为空！！！ r
+
+Convert component vant\dialog\dialog.js success!
+Convert vant\dialog\index.vue success!
+Convert vant\definitions\weapp.js success!
+[Error] targetFilePath: F:\ZJ\中课答疑\classAnswer_uni\vant\definitions\weapp.js 内容为空！！！ r
+
+Convert vant\dropdown-item\index.vue success!
+Convert vant\dropdown-menu\index.vue success!
+Convert vant\field\index.vue success!
+Convert component vant\field\props.js success!
+Convert vant\datetime-picker\index.vue success!
+Convert vant\goods-action\index.vue success!
+Convert vant\goods-action-button\index.vue success!
+Convert vant\goods-action-icon\index.vue success!
+Convert vant\grid\index.vue success!
+Convert vant\grid-item\index.vue success!
+Convert vant\empty\index.vue success!
+Convert vant\icon\index.vue success!
+Convert vant\image\index.vue success!
+Convert vant\index-anchor\index.vue success!
+Convert vant\info\index.vue success!
+Convert vant\loading\index.vue success!
+Convert component vant\mixins\basic.js success!
+Convert component vant\mixins\button.js success!
+Convert component vant\mixins\link.js success!
+Convert component vant\mixins\open-type.js success!
+Convert component vant\mixins\page-scroll.js success!
+Convert component vant\mixins\touch.js success!
+Convert component vant\mixins\transition.js success!
+Convert vant\nav-bar\index.vue success!
+Convert vant\notice-bar\index.vue success!
+Convert vant\overlay\index.vue success!
+Convert vant\index-bar\index.vue success!
+Convert vant\panel\index.vue success!
+Convert vant\picker\index.vue success!
+Convert component vant\picker\shared.js success!
+Convert component vant\picker\toolbar.vue.wxml success!
+Convert vant\picker-column\index.vue success!
+Convert vant\popup\index.vue success!
+Convert vant\notify\index.vue success!
+Convert component vant\notify\notify.js success!
+Convert vant\radio-group\index.vue success!
+Convert vant\rate\index.vue success!
+Convert vant\progress\index.vue success!
+Convert vant\row\index.vue success!
+Convert vant\search\index.vue success!
+Convert vant\share-sheet\index.vue success!
+Convert vant\share-sheet\options.vue success!
+Convert vant\sidebar\index.vue success!
+Convert vant\sidebar-item\index.vue success!
+Convert vant\radio\index.vue success!
+Convert vant\skeleton\index.vue success!
+Convert vant\slider\index.vue success!
+Convert vant\stepper\index.vue success!
+Convert vant\sticky\index.vue success!
+Convert vant\swipe-cell\index.vue success!
+Convert vant\submit-bar\index.vue success!
+Convert vant\steps\index.vue success!
+Convert vant\switch\index.vue success!
+Convert vant\tab\index.vue success!
+Convert vant\tabbar\index.vue success!
+Convert vant\tabbar-item\index.vue success!
+Convert vant\tabs\index.vue success!
+Convert vant\tag\index.vue success!
+Convert vant\toast\index.vue success!
+Convert component vant\toast\toast.js success!
+Convert vant\transition\index.vue success!
+Convert vant\tree-select\index.vue success!
+Convert vant\uploader\index.vue success!
+Convert component vant\uploader\shared.js success!
+Convert component vant\uploader\utils.js success!
+Convert vant\calendar\components\header\index.vue success!
+Convert vant\calendar\components\month\index.vue success!
+Convert vant\common\index.css.wxss success!
+Convert vant\common\style\ellipsis.css.wxss success!
+Convert vant\common\style\clearfix.css.wxss success!
+Convert vant\common\style\hairline.css.wxss success!
+[命名替换]:  $emit  -->  emitFun    file: vant\mixins\basic.js
+[命名替换]:  scrollIntoView  -->  scrollIntoViewFun    file: vant\calendar\index.js
+[命名替换]:  scrollIntoView  -->  scrollIntoViewFun    file: vant\calendar\index.js
+[命名替换]:  scrollIntoView  -->  scrollIntoViewFun    file: vant\calendar\index.js
+[命名替换]:  scrollIntoView  -->  scrollIntoViewFun    file: vant\calendar\index.js
+
+转换完成: 
+耗时：3892ms
+当前转换模式：【Hbuilder X】，生成HbuilderX项目。
+优点：上手快，项目结构较简单；
+缺点：资源路径会因为表达式而无法全部被修复(“可能”需手动修复)
+
+注意：
+1.当看到"image漏网之鱼"，意味着您"可能"，“可能”，记住是“可能”，但不一定需要手动调整对应代码(以实际编译运行为准)，当image标签的src属性是含变量或表达式，工具还无法做到100%转换，需要手动修改为相对/static目录的路径
+
+
+日志说明：
+1. image漏网之鱼 --> 为HbuilderX模式时，需要将资源移动到static，并且修复相应文件路径，有可能src为网络文件，有可能为变量或表达式，可能会导致转换后文件找不到，因此提示一下
+修复提示：编译时，如有报错就将对应位置修复即可(虽然目前uni-app有类似的支持，似乎并不完善)
+
+2. 命名替换 --> 小程序里对于属性名基本没什么限制，如id能做属性名，data下面的变量和函数名还能重名，但这些在uni-app里是不支持的，因此做了相关替换，并记录日志，也许组件在外部调用时，函数名被改而因此报错时，请查看答疑文档
