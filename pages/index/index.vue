@@ -149,7 +149,10 @@
 		 * 生命周期函数--监听页面显示
 		 */
 		onShow: function() {
-			this.getStorages()
+			this.getStorages()// 集中获取storage的属性值
+			// uni.navigateTo({
+			//     url: '../login/userLogin'
+			// });
 		},
 		methods: {
 			// 集中获取storage的属性值
@@ -178,6 +181,7 @@
 
 				});
 			},
+			
 			//检查方法--当用户没有登录时，弹出提示
 			examineLogin() {
 				let userInfoData = this.userInfoData;
@@ -319,16 +323,12 @@
 				uni.login({
 					provider: 'weixin',
 					success: res => {
-						console.log({
-							res
-						}, '登录');
+						console.log(res, '登录');
 						let code = res.code;
 						uni.getUserInfo({
 							provider: 'weixin',
 							success: res => {
-								console.log({
-									res
-								}, '获取用户信息');
+								console.log(res, '获取用户信息');
 								let userInfo = res.userInfo;
 								let dataLists = {
 									code: code

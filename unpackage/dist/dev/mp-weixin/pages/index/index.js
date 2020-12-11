@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   uPopup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 103))
+    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 128))
   },
   treeSelect: function() {
-    return __webpack_require__.e(/*! import() | components/tree-select/tree-select */ "components/tree-select/tree-select").then(__webpack_require__.bind(null, /*! @/components/tree-select/tree-select.vue */ 110))
+    return __webpack_require__.e(/*! import() | components/tree-select/tree-select */ "components/tree-select/tree-select").then(__webpack_require__.bind(null, /*! @/components/tree-select/tree-select.vue */ 135))
   }
 }
 var render = function() {
@@ -303,7 +303,10 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
       * 生命周期函数--监听页面显示
       */
   onShow: function onShow() {
-    this.getStorages();
+    this.getStorages(); // 集中获取storage的属性值
+    // uni.navigateTo({
+    //     url: '../login/userLogin'
+    // });
   },
   methods: {
     // 集中获取storage的属性值
@@ -332,6 +335,7 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
 
 
     },
+
     //检查方法--当用户没有登录时，弹出提示
     examineLogin: function examineLogin() {
       var userInfoData = this.userInfoData;
@@ -473,16 +477,12 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
       uni.login({
         provider: 'weixin',
         success: function success(res) {
-          console.log({
-            res: res },
-          '登录');
+          console.log(res, '登录');
           var code = res.code;
           uni.getUserInfo({
             provider: 'weixin',
             success: function success(res) {
-              console.log({
-                res: res },
-              '获取用户信息');
+              console.log(res, '获取用户信息');
               var userInfo = res.userInfo;
               var dataLists = {
                 code: code };

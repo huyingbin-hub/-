@@ -89,6 +89,7 @@
 			}
 		},
 		methods: {
+			
 			// 父
 			handleClickCate(item, index) {
 				this.CateIndex = index
@@ -99,6 +100,7 @@
 				e.detail = item
 				this.$emit('click-nav', e)
 			},
+			
 			// 子
 			handleClickSub(subItem, subItemIndex) {
 				this.SubIndex = subItemIndex
