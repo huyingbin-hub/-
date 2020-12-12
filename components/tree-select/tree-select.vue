@@ -3,7 +3,7 @@
 		<view class="nav">
 			<!-- 左侧 -->
 			<view class="nav-left">
-				<scroll-view  class="scrollView"  scroll-y="true">
+				<scroll-view class="scrollView" scroll-y="true">
 					<view class="nav-left-item" v-for="(item,index) in items" @click="handleClickCate(item,index)" :key="index">
 						<view class="nav-left-items" style="background-color: #fff;font-weight:550;border-left:5rpx solid red;height: 80rpx;width: 100%;display: flex;align-items: center;justify-content: center;"
 						 v-if="index===CateIndex">
@@ -17,7 +17,7 @@
 			</view>
 			<!-- 右侧 -->
 			<view class="nav-right">
-				<scroll-view  class="scrollView" scroll-y="true" >
+				<scroll-view class="scrollView" scroll-y="true">
 					<view class="nav-right-item" v-for="(subItem,subItemIndex) in items[CateIndex].children" :key="subItem.text"
 					 @click.stop="handleClickSub(subItem,subItemIndex)">
 						<view class="" style="color: #EE0A24;" v-if="subItem.id==activeId">
@@ -38,8 +38,27 @@
 		</view>
 	</view>
 </template>
-
 <script>
+	// 属性
+	// @parms items 数组 格式
+	// items = {
+	// 	"id": item.id,
+	// 	"text": item.lb,
+	// 	"p_id": item.p_id,
+	// 	"children": objChild {
+	// 		"id": items.id,
+	// 		"text": items.lb,
+	// 		"p_id": items.p_id
+	// 	}
+	// }
+
+	// @parms mainActiveIndex 左侧选择
+	// @parms activeId 右侧选择
+
+	// 事件
+	// @parms @click - nav 左侧点击事件
+
+	// @parms @click - item 右侧点击事件
 	export default {
 		data() {
 			return {
@@ -60,6 +79,7 @@
 			};
 		},
 		props: {
+			// 数组
 			items: {
 				type: Array,
 				default: []
@@ -73,8 +93,7 @@
 				default: ''
 			}
 		},
-		onShow() {
-		},
+		onShow() {},
 		mounted() {
 			if (this.mainActiveIndex) {
 				this.handleIndex = this.mainActiveIndex
@@ -89,8 +108,8 @@
 			}
 		},
 		methods: {
-			
-			// 父
+
+			// 左侧点击事件
 			handleClickCate(item, index) {
 				this.CateIndex = index
 				console.log(item, index)
@@ -100,8 +119,8 @@
 				e.detail = item
 				this.$emit('click-nav', e)
 			},
-			
-			// 子
+
+			// 右侧点击事件
 			handleClickSub(subItem, subItemIndex) {
 				this.SubIndex = subItemIndex
 				let e = {

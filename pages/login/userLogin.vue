@@ -87,14 +87,14 @@
 			};
 		},
 		onShow() {
-			
+
 			// 判断隐私协议/用户协议用户是否确认
-			let protocol=uni.getStorageSync('protocol');
-			protocol?(this.dealShow=false):(this.dealShow=true)
-			
+			let protocol = uni.getStorageSync('protocol');
+			protocol ? (this.dealShow = false) : (this.dealShow = true)
+
 			// 判断是否记住账号登录
-			let phone=uni.setStorageSync('phone');
-			phone?(this.phone=phone):(this.phone='')
+			let phone = uni.setStorageSync('phone');
+			phone ? (this.phone = phone) : (this.phone = '')
 		},
 		methods: {
 			..._methods,
@@ -128,7 +128,7 @@
 					return
 				}
 				// 点击记住账号  存储手机号
-				if(this.checked){
+				if (this.checked) {
 					uni.setStorageSync('phone', this.phone);
 				}
 				console.log("ok")

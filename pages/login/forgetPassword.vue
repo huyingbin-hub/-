@@ -189,9 +189,7 @@
 					this.show_toast("两次密码不一致")
 					return
 				}
-
 				console.log("注册", this.phone, this.authCode, this.password, this.affirmPassword)
-
 				let postObj = {
 					mphone: this.phone,
 					password: this.password,
@@ -203,19 +201,19 @@
 					icon: "none"
 				});
 
-				Services.userRegister(postObj).then(res => {
-					if (res.Flag) {
-						console.log('res', res)
-						this.show_toast("注册成功")
-						setTimeout(function() {
-							uni.reLaunch({
-								url: '/pages/login/login'
-							})
-						}, 500)
-					} else {
-						this.show_toast(res.Content)
-					}
-				})
+				// Services.userRegister(postObj).then(res => {
+				// 	if (res.Flag) {
+				// 		console.log('res', res)
+				// 		this.show_toast("注册成功")
+				// 		setTimeout(function() {
+				// 			uni.reLaunch({
+				// 				url: '/pages/login/login'
+				// 			})
+				// 		}, 500)
+				// 	} else {
+				// 		this.show_toast(res.Content)
+				// 	}
+				// })
 			}
 
 		}

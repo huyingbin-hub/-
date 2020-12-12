@@ -498,30 +498,30 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
                 key: "userInfoData",
                 data: userInfo });
 
-              // 发送code获取用户信息
-              // Service.userIf(dataLists, jiamiData).then(res => {
-              // 	console.log({res}, '用户信息')
-              // 	if (res.event == 100) {
-              // 		uni.showToast({
-              // 			title: "登录成功",
-              // 			icon: 'none',
-              // 			duration: 1000
-              // 		});
-              // 		this.userInfoData = res.data
-              // 		console.log(this.userInfoData, 'userInfoData')
-              // 		this.wechat_id = res.data.id
-              // 		this.isThreeType = 0
-              // 		uni.setStorage({
-              // 			key: "userInfoData",
-              // 			data: res.data
-              // 		});
-              // 		//存储微信用户信息
-              // 		this.reserveUserInfo(res.data, userInfo);
-              // 		if (res.data.mobile == '') {
-              // 			this.phoneModuleShow = true
-              // 		}
-              // 	}
-              // });
+              发送code获取用户信息;
+              Service.userIf(dataLists, jiamiData).then(function (res) {
+                console.log({ res: res }, '用户信息');
+                if (res.event == 100) {
+                  uni.showToast({
+                    title: "登录成功",
+                    icon: 'none',
+                    duration: 1000 });
+
+                  _this2.userInfoData = res.data;
+                  console.log(_this2.userInfoData, 'userInfoData');
+                  _this2.wechat_id = res.data.id;
+                  _this2.isThreeType = 0;
+                  uni.setStorage({
+                    key: "userInfoData",
+                    data: res.data });
+
+                  //存储微信用户信息
+                  _this2.reserveUserInfo(res.data, userInfo);
+                  if (res.data.mobile == '') {
+                    _this2.phoneModuleShow = true;
+                  }
+                }
+              });
 
             } });
 
@@ -534,8 +534,8 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     reserveUserInfo: function reserveUserInfo(data, userInfo) {
       console.log(data, userInfo);
       var dataLists = {
-        // wechat_id: data.id,
-        wechat_id: 109,
+        wechat_id: data.id,
+        // wechat_id: 109,
         nickName: userInfo.nickName,
         avatarUrl: userInfo.avatarUrl,
         gender: userInfo.gender,
@@ -544,8 +544,8 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
         country: userInfo.country };
 
       var jiamiData = {
-        // wechat_id: data.id,
-        wechat_id: 109,
+        wechat_id: data.id,
+        // wechat_id: 109,
         nickName: userInfo.nickName,
         avatarUrl: userInfo.avatarUrl,
         gender: userInfo.gender,

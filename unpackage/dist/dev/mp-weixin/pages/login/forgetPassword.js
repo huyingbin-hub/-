@@ -312,7 +312,7 @@ var _public = __webpack_require__(/*! ../../utils/public.js */ 109);function own
     },
 
     //修改
-    loginClick: function loginClick() {var _this = this;
+    loginClick: function loginClick() {
       if (!this.phone) {
         this.show_toast("手机号不能为空");
         return;
@@ -337,9 +337,7 @@ var _public = __webpack_require__(/*! ../../utils/public.js */ 109);function own
         this.show_toast("两次密码不一致");
         return;
       }
-
       console.log("注册", this.phone, this.authCode, this.password, this.affirmPassword);
-
       var postObj = {
         mphone: this.phone,
         password: this.password,
@@ -351,19 +349,19 @@ var _public = __webpack_require__(/*! ../../utils/public.js */ 109);function own
         icon: "none" });
 
 
-      Services.userRegister(postObj).then(function (res) {
-        if (res.Flag) {
-          console.log('res', res);
-          _this.show_toast("注册成功");
-          setTimeout(function () {
-            uni.reLaunch({
-              url: '/pages/login/login' });
-
-          }, 500);
-        } else {
-          _this.show_toast(res.Content);
-        }
-      });
+      // Services.userRegister(postObj).then(res => {
+      // 	if (res.Flag) {
+      // 		console.log('res', res)
+      // 		this.show_toast("注册成功")
+      // 		setTimeout(function() {
+      // 			uni.reLaunch({
+      // 				url: '/pages/login/login'
+      // 			})
+      // 		}, 500)
+      // 	} else {
+      // 		this.show_toast(res.Content)
+      // 	}
+      // })
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

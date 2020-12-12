@@ -158,9 +158,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
-//
-var _default =
-{
+
+// 属性
+// @parms items 数组 格式
+// items = {
+// 	"id": item.id,
+// 	"text": item.lb,
+// 	"p_id": item.p_id,
+// 	"children": objChild {
+// 		"id": items.id,
+// 		"text": items.lb,
+// 		"p_id": items.p_id
+// 	}
+// }
+
+// @parms mainActiveIndex 左侧选择
+// @parms activeId 右侧选择
+
+// 事件
+// @parms @click - nav 左侧点击事件
+
+// @parms @click - item 右侧点击事件
+var _default = {
   data: function data() {
     return {
       CateIndex: null, //父 index
@@ -180,6 +199,7 @@ var _default =
 
   },
   props: {
+    // 数组
     items: {
       type: Array,
       default: [] },
@@ -193,8 +213,7 @@ var _default =
       default: '' } },
 
 
-  onShow: function onShow() {
-  },
+  onShow: function onShow() {},
   mounted: function mounted() {
     if (this.mainActiveIndex) {
       this.handleIndex = this.mainActiveIndex;
@@ -210,7 +229,7 @@ var _default =
   },
   methods: {
 
-    // 父
+    // 左侧点击事件
     handleClickCate: function handleClickCate(item, index) {
       this.CateIndex = index;
       console.log(item, index);
@@ -221,7 +240,7 @@ var _default =
       this.$emit('click-nav', e);
     },
 
-    // 子
+    // 右侧点击事件
     handleClickSub: function handleClickSub(subItem, subItemIndex) {
       this.SubIndex = subItemIndex;
       var e = {

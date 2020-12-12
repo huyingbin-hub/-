@@ -344,30 +344,30 @@
 									key: "userInfoData",
 									data: userInfo
 								});
-								// 发送code获取用户信息
-								// Service.userIf(dataLists, jiamiData).then(res => {
-								// 	console.log({res}, '用户信息')
-								// 	if (res.event == 100) {
-								// 		uni.showToast({
-								// 			title: "登录成功",
-								// 			icon: 'none',
-								// 			duration: 1000
-								// 		});
-								// 		this.userInfoData = res.data
-								// 		console.log(this.userInfoData, 'userInfoData')
-								// 		this.wechat_id = res.data.id
-								// 		this.isThreeType = 0
-								// 		uni.setStorage({
-								// 			key: "userInfoData",
-								// 			data: res.data
-								// 		});
-								// 		//存储微信用户信息
-								// 		this.reserveUserInfo(res.data, userInfo);
-								// 		if (res.data.mobile == '') {
-								// 			this.phoneModuleShow = true
-								// 		}
-								// 	}
-								// });
+								发送code获取用户信息
+								Service.userIf(dataLists, jiamiData).then(res => {
+									console.log({res}, '用户信息')
+									if (res.event == 100) {
+										uni.showToast({
+											title: "登录成功",
+											icon: 'none',
+											duration: 1000
+										});
+										this.userInfoData = res.data
+										console.log(this.userInfoData, 'userInfoData')
+										this.wechat_id = res.data.id
+										this.isThreeType = 0
+										uni.setStorage({
+											key: "userInfoData",
+											data: res.data
+										});
+										//存储微信用户信息
+										this.reserveUserInfo(res.data, userInfo);
+										if (res.data.mobile == '') {
+											this.phoneModuleShow = true
+										}
+									}
+								});
 
 							}
 						});
@@ -380,8 +380,8 @@
 			reserveUserInfo(data, userInfo) {
 				console.log(data, userInfo);
 				let dataLists = {
-					// wechat_id: data.id,
-					wechat_id: 109,
+					wechat_id: data.id,
+					// wechat_id: 109,
 					nickName: userInfo.nickName,
 					avatarUrl: userInfo.avatarUrl,
 					gender: userInfo.gender,
@@ -390,8 +390,8 @@
 					country: userInfo.country
 				};
 				let jiamiData = {
-					// wechat_id: data.id,
-					wechat_id: 109,
+					wechat_id: data.id,
+					// wechat_id: 109,
 					nickName: userInfo.nickName,
 					avatarUrl: userInfo.avatarUrl,
 					gender: userInfo.gender,
