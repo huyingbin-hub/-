@@ -6,7 +6,10 @@
     "pages/myQuestions/myQuestions",
     "pages/myQuestionsReply/myQuestionsReply",
     "pages/logs/logs",
-    "pages/huoDong/huoDong"
+    "pages/huoDong/huoDong",
+    "pages/login/userLogin",
+    "pages/login/register",
+    "pages/login/forgetPassword"
   ],
   "subPackages": [],
   "window": {

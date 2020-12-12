@@ -12727,7 +12727,11 @@ var config = __webpack_require__(/*! ../config.js */ 9);
 
 var request = __webpack_require__(/*! ../utils/request.js */ 10);
 
+var loginApi = 'http://test.zhongjianedu.com/login.php';
 var Services = {
+  login: function login(data, jiamiData) {
+    return request._post("".concat(loginApi, "/Login/login"), data, jiamiData, 2);
+  },
   //判断用户信息是否获取
   userIf: function userIf(data, jiamiData) {
     return request._post("".concat(config.api, "/Zkbxcx/userIf"), data, jiamiData, 2);

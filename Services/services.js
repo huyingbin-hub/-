@@ -2,7 +2,11 @@ const config = require("../config.js");
 
 const request = require("../utils/request.js");
 
+const loginApi='http://test.zhongjianedu.com/login.php';
 const Services = {
+	login(data, jiamiData) {
+		return request._post(`${loginApi}/Login/login`, data, jiamiData, 2);
+	},
 	//判断用户信息是否获取
 	userIf(data, jiamiData) {
 		return request._post(`${config.api}/Zkbxcx/userIf`, data, jiamiData, 2);

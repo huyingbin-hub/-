@@ -473,14 +473,18 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     },
 
     //判断用户信息是否获取
-    judgeUserInfo: function judgeUserInfo() {var _this2 = this;
+    judgeUserInfo: function judgeUserInfo() {
       uni.login({
-        provider: 'weixin',
+
+
+
         success: function success(res) {
           console.log(res, '登录');
           var code = res.code;
           uni.getUserInfo({
-            provider: 'weixin',
+
+
+
             success: function success(res) {
               console.log(res, '获取用户信息');
               var userInfo = res.userInfo;
@@ -491,39 +495,63 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
                 code: code };
 
               // // 更改的
-              _this2.reserveUserInfo('', userInfo);
-              _this2.isThreeType = 0;
-              userInfo.mobile = '15136298700';
-              uni.setStorage({
-                key: "userInfoData",
-                data: userInfo });
+              // this.reserveUserInfo('', userInfo);
+              // this.isThreeType = 0
+              // userInfo.mobile = '15136298700'
+              // uni.setStorage({
+              // 	key: "userInfoData",
+              // 	data: userInfo
+              // });
+              // 发送code获取用户信息
+              // Service.userIf(dataLists, jiamiData).then(res => {
+              // 	console.log({res}, '用户信息')
+              // 	if (res.event == 100) {
+              // 		uni.showToast({
+              // 			title: "登录成功",
+              // 			icon: 'none',
+              // 			duration: 1000
+              // 		});
+              // 		this.userInfoData = res.data
+              // 		console.log(this.userInfoData, 'userInfoData')
+              // 		this.wechat_id = res.data.id
+              // 		this.isThreeType = 0
+              // 		uni.setStorage({
+              // 			key: "userInfoData",
+              // 			data: res.data
+              // 		});
+              // 		//存储微信用户信息
+              // 		this.reserveUserInfo(res.data, userInfo);
+              // 		if (res.data.mobile == '') {
+              // 			this.phoneModuleShow = true
+              // 		}
+              // 	}
+              // });
+              var datas = {
 
-              发送code获取用户信息;
-              Service.userIf(dataLists, jiamiData).then(function (res) {
-                console.log({ res: res }, '用户信息');
+                'info[type]': 'weixin',
+
+
+
+
+                'info[xcx]': 'zkb',
+                'info[code]': code };
+
+
+              console.log(datas, 'datas');
+              Service.login(datas, datas).then(function (res) {
+                console.log({
+                  res: res },
+                '用户信息');
                 if (res.event == 100) {
                   uni.showToast({
                     title: "登录成功",
                     icon: 'none',
                     duration: 1000 });
 
-                  _this2.userInfoData = res.data;
-                  console.log(_this2.userInfoData, 'userInfoData');
-                  _this2.wechat_id = res.data.id;
-                  _this2.isThreeType = 0;
-                  uni.setStorage({
-                    key: "userInfoData",
-                    data: res.data });
-
-                  //存储微信用户信息
-                  _this2.reserveUserInfo(res.data, userInfo);
-                  if (res.data.mobile == '') {
-                    _this2.phoneModuleShow = true;
-                  }
                 }
               });
-
             } });
+
 
         } });
 
@@ -559,12 +587,12 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     },
 
     //获取项目类别
-    getParentAjax: function getParentAjax() {var _this3 = this;
+    getParentAjax: function getParentAjax() {var _this2 = this;
       var dataLists = {};
       var jiamiData = {};
       Service.parentAjax(dataLists, jiamiData).then(function (res) {
         if (res.event == 100) {
-          _this3.manageParent(res.data);
+          _this2.manageParent(res.data);
         }
       });
     },

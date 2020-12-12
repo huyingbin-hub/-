@@ -149,7 +149,7 @@
 		 * 生命周期函数--监听页面显示
 		 */
 		onShow: function() {
-			this.getStorages()// 集中获取storage的属性值
+			this.getStorages() // 集中获取storage的属性值
 			// uni.navigateTo({
 			//     url: '../login/userLogin'
 			// });
@@ -181,7 +181,7 @@
 
 				});
 			},
-			
+
 			//检查方法--当用户没有登录时，弹出提示
 			examineLogin() {
 				let userInfoData = this.userInfoData;
@@ -321,12 +321,16 @@
 			//判断用户信息是否获取
 			judgeUserInfo() {
 				uni.login({
+					// #ifdef APP-PLUS
 					provider: 'weixin',
+					// #endif
 					success: res => {
 						console.log(res, '登录');
 						let code = res.code;
 						uni.getUserInfo({
+							// #ifdef APP-PLUS
 							provider: 'weixin',
+							// #endif
 							success: res => {
 								console.log(res, '获取用户信息');
 								let userInfo = res.userInfo;
@@ -337,39 +341,63 @@
 									code: code
 								};
 								// // 更改的
-								this.reserveUserInfo('', userInfo);
-								this.isThreeType = 0
-								userInfo.mobile = '15136298700'
-								uni.setStorage({
-									key: "userInfoData",
-									data: userInfo
-								});
-								发送code获取用户信息
-								Service.userIf(dataLists, jiamiData).then(res => {
-									console.log({res}, '用户信息')
+								// this.reserveUserInfo('', userInfo);
+								// this.isThreeType = 0
+								// userInfo.mobile = '15136298700'
+								// uni.setStorage({
+								// 	key: "userInfoData",
+								// 	data: userInfo
+								// });
+								// 发送code获取用户信息
+								// Service.userIf(dataLists, jiamiData).then(res => {
+								// 	console.log({res}, '用户信息')
+								// 	if (res.event == 100) {
+								// 		uni.showToast({
+								// 			title: "登录成功",
+								// 			icon: 'none',
+								// 			duration: 1000
+								// 		});
+								// 		this.userInfoData = res.data
+								// 		console.log(this.userInfoData, 'userInfoData')
+								// 		this.wechat_id = res.data.id
+								// 		this.isThreeType = 0
+								// 		uni.setStorage({
+								// 			key: "userInfoData",
+								// 			data: res.data
+								// 		});
+								// 		//存储微信用户信息
+								// 		this.reserveUserInfo(res.data, userInfo);
+								// 		if (res.data.mobile == '') {
+								// 			this.phoneModuleShow = true
+								// 		}
+								// 	}
+								// });
+								let datas = {
+									// #ifdef MP-WEIXIN
+									'info[type]': 'weixin',
+									// #endif
+									// #ifdef MP-TOUTIAO
+									'info[type]': 'zijie',
+									// #endif
+									'info[xcx]': 'zkb',
+									'info[code]': code,
+								}
+
+								console.log(datas, 'datas')
+								Service.login(datas, datas).then(res => {
+									console.log({
+										res
+									}, '用户信息')
 									if (res.event == 100) {
 										uni.showToast({
 											title: "登录成功",
 											icon: 'none',
 											duration: 1000
 										});
-										this.userInfoData = res.data
-										console.log(this.userInfoData, 'userInfoData')
-										this.wechat_id = res.data.id
-										this.isThreeType = 0
-										uni.setStorage({
-											key: "userInfoData",
-											data: res.data
-										});
-										//存储微信用户信息
-										this.reserveUserInfo(res.data, userInfo);
-										if (res.data.mobile == '') {
-											this.phoneModuleShow = true
-										}
 									}
 								});
+							},
 
-							}
 						});
 					}
 				});
