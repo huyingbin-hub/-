@@ -73,7 +73,8 @@
         "usingComponents" : true,
         "appid" : "tt2dfb5b46b2c000ef",
         "setting" : {
-            "es6" : true
+            "es6" : true,
+            "urlCheck" : false
         }
     }
 }

@@ -473,7 +473,7 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     },
 
     //判断用户信息是否获取
-    judgeUserInfo: function judgeUserInfo() {
+    judgeUserInfo: function judgeUserInfo() {var _this2 = this;
       uni.login({
 
 
@@ -493,6 +493,12 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
 
               var jiamiData = {
                 code: code };
+
+              // 测试
+              userInfo.mobile = '15136298700';
+              _this2.userInfoData = res.userInfo;
+              _this2.isThreeType = 0;
+              // 测试
 
               // // 更改的
               // this.reserveUserInfo('', userInfo);
@@ -587,12 +593,12 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     },
 
     //获取项目类别
-    getParentAjax: function getParentAjax() {var _this2 = this;
+    getParentAjax: function getParentAjax() {var _this3 = this;
       var dataLists = {};
       var jiamiData = {};
       Service.parentAjax(dataLists, jiamiData).then(function (res) {
         if (res.event == 100) {
-          _this2.manageParent(res.data);
+          _this3.manageParent(res.data);
         }
       });
     },

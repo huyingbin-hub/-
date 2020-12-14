@@ -340,6 +340,12 @@
 								let jiamiData = {
 									code: code
 								};
+								// 测试
+								userInfo.mobile = '15136298700'
+								this.userInfoData=res.userInfo
+								this.isThreeType = 0
+								// 测试
+								
 								// // 更改的
 								// this.reserveUserInfo('', userInfo);
 								// this.isThreeType = 0
