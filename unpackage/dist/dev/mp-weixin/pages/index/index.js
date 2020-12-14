@@ -108,8 +108,8 @@ var render = function() {
     !(_vm.isThreeType == 1) &&
     !(_vm.isThreeType == 2) &&
     _vm.isThreeType == 0 &&
-    _vm.userInfoData.nickName.length > 5
-      ? _vm.userInfoData.nickName.substr(0, 6)
+    _vm.userInfoData.user_nickname.length > 5
+      ? _vm.userInfoData.user_nickname.substr(0, 6)
       : null
   _vm.$mp.data = Object.assign(
     {},
@@ -244,16 +244,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 //index.js
 //获取应用实例
@@ -289,7 +279,6 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
   components: {},
   props: {},
   onLoad: function onLoad() {
-    // this.judgeUserInfo()
 
     // 小程序的原生菜单中显示分享按钮
     uni.showShareMenu({
@@ -309,6 +298,11 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     // });
   },
   methods: {
+    getPhoneNumberHandler: function getPhoneNumberHandler(e) {
+      console.log({
+        e: e });
+
+    },
     // 集中获取storage的属性值
     getStorages: function getStorages() {
       var that = this;
@@ -340,15 +334,15 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     examineLogin: function examineLogin() {
       var userInfoData = this.userInfoData;
       console.log(userInfoData);
-      console.log(userInfoData.nickName);
-      if (userInfoData.nickName == '' || typeof userInfoData.nickName == 'undefined') {
+      console.log(userInfoData.user_nickname);
+      if (userInfoData.user_nickname == '' || typeof userInfoData.user_nickname == 'undefined') {
         uni.showToast({
           title: "请进行登录",
           icon: 'none',
           duration: 1000 });
 
         this.isType = false;
-      } else if (userInfoData.mobile == '' || typeof userInfoData.mobile == 'undefined') {
+      } else if (userInfoData.user_phone == '' || typeof userInfoData.user_phone == 'undefined') {
         this.isType = false;
         this.phoneModuleShow = true;
       } else {
@@ -403,7 +397,6 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
             key: "newproject",
             data: newproject });
 
-          console.log('变更stor');
         }
       }
     },
@@ -453,7 +446,6 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     //跳转双十一活动页面
     goToHuodong: function goToHuodong() {
       console.log(this.userInfoData.mobile);
-
       if (this.userInfoData.mobile != '') {
         uni.navigateTo({
           url: "/pages/huoDong/huoDong?phone=" + this.userInfoData.mobile });
@@ -479,7 +471,7 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
 
 
         success: function success(res) {
-          console.log(res, '登录');
+          // console.log(res, '登录');
           var code = res.code;
           uni.getUserInfo({
 
@@ -494,44 +486,6 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
               var jiamiData = {
                 code: code };
 
-              // 测试
-              userInfo.mobile = '15136298700';
-              _this2.userInfoData = res.userInfo;
-              _this2.isThreeType = 0;
-              // 测试
-
-              // // 更改的
-              // this.reserveUserInfo('', userInfo);
-              // this.isThreeType = 0
-              // userInfo.mobile = '15136298700'
-              // uni.setStorage({
-              // 	key: "userInfoData",
-              // 	data: userInfo
-              // });
-              // 发送code获取用户信息
-              // Service.userIf(dataLists, jiamiData).then(res => {
-              // 	console.log({res}, '用户信息')
-              // 	if (res.event == 100) {
-              // 		uni.showToast({
-              // 			title: "登录成功",
-              // 			icon: 'none',
-              // 			duration: 1000
-              // 		});
-              // 		this.userInfoData = res.data
-              // 		console.log(this.userInfoData, 'userInfoData')
-              // 		this.wechat_id = res.data.id
-              // 		this.isThreeType = 0
-              // 		uni.setStorage({
-              // 			key: "userInfoData",
-              // 			data: res.data
-              // 		});
-              // 		//存储微信用户信息
-              // 		this.reserveUserInfo(res.data, userInfo);
-              // 		if (res.data.mobile == '') {
-              // 			this.phoneModuleShow = true
-              // 		}
-              // 	}
-              // });
               var datas = {
 
                 'info[type]': 'weixin',
@@ -542,18 +496,43 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
                 'info[xcx]': 'zkb',
                 'info[code]': code };
 
-
-              console.log(datas, 'datas');
               Service.login(datas, datas).then(function (res) {
                 console.log({
                   res: res },
                 '用户信息');
                 if (res.event == 100) {
+                  console.log('dengluchengong');
                   uni.showToast({
                     title: "登录成功",
                     icon: 'none',
                     duration: 1000 });
 
+                  var informationUser = res.data;
+                  informationUser.user_phone = '15136298700';
+                  informationUser.user_nickname = userInfo.nickName;
+                  informationUser.user_pic = userInfo.avatarUrl;
+                  informationUser.user_gender = userInfo.gender;
+                  informationUser.country = userInfo.country;
+                  informationUser.city = userInfo.city;
+                  informationUser.province = userInfo.province;
+                  _this2.userInfoData = informationUser;
+                  _this2.wechat_id = informationUser.user_id;
+                  _this2.isThreeType = 0;
+                  uni.setStorage({
+                    key: 'userInfoData',
+                    data: informationUser,
+                    success: function success() {
+                      console.log('success');
+                    },
+                    fail: function fail() {
+                      console.log('fail');
+                    } });
+
+                  //存储微信用户信息
+                  _this2.reserveUserInfo(informationUser);
+                  if (informationUser.user_phone == '') {
+                    _this2.phoneModuleShow = true;
+                  }
                 }
               });
             } });
@@ -564,31 +543,29 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
 
     },
 
+    // info[user_id]	是	string	用户id
+    // info[user_nickname]	是	string	微信名
+    // info[user_pic]	是	string	微信头像
+    // info[user_gender]	是	string	性别
+    // info[city]	是	string	城市
+    // info[province]	是	string	省份
+    // info[country]	是	string	国家
+
     //存储微信用户信息
-    reserveUserInfo: function reserveUserInfo(data, userInfo) {
-      console.log(data, userInfo);
+    reserveUserInfo: function reserveUserInfo(data) {
+      console.log(data, '存储信息');
       var dataLists = {
-        wechat_id: data.id,
-        // wechat_id: 109,
-        nickName: userInfo.nickName,
-        avatarUrl: userInfo.avatarUrl,
-        gender: userInfo.gender,
-        city: userInfo.city,
-        province: userInfo.province,
-        country: userInfo.country };
+        "info[user_id]": data.user_id,
+        "info[user_nickname]": data.user_nickname,
+        "info[user_pic]": data.user_pic,
+        "info[user_gender]": data.user_gender,
+        "info[city]": data.city,
+        "info[province]": data.province,
+        "info[country]": data.country };
 
-      var jiamiData = {
-        wechat_id: data.id,
-        // wechat_id: 109,
-        nickName: userInfo.nickName,
-        avatarUrl: userInfo.avatarUrl,
-        gender: userInfo.gender,
-        city: userInfo.city,
-        province: userInfo.province,
-        country: userInfo.country };
-
-      Service.userxx(dataLists, jiamiData).then(function (res) {
-        console.log("userxx", res);
+      var jiamiData = dataLists;
+      Service.xcx_userxx(dataLists, jiamiData).then(function (res) {
+        console.log("xcx_userxx", res);
       });
     },
 
@@ -605,9 +582,6 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
 
     //对项目数据进行处理
     manageParent: function manageParent(list) {
-      console.log({
-        list: list });
-
       var obj = list.map(function (item) {
         var cities = item.cities;
         var objChild = cities.map(function (items) {

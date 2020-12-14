@@ -271,12 +271,12 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     //获得答疑历史记录
     getAnswerRecordList: function getAnswerRecordList() {var _this = this;
       var dataLists = {
-        wechat_id: this.userInfoData.id,
+        wechat_id: this.userInfoData.user_id,
         page: this.page,
         size: this.size };
 
       var jiamiData = {
-        wechat_id: this.userInfoData.id,
+        wechat_id: this.userInfoData.user_id,
         page: this.page,
         size: this.size };
 

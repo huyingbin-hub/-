@@ -2,10 +2,20 @@ const config = require("../config.js");
 
 const request = require("../utils/request.js");
 
-const loginApi='http://test.zhongjianedu.com/login.php';
+// // #ifndef MP-TOUTIAO
+// const loginApi = 'http://test.zhongjianedu.com/login.php';
+// // #endif
+// #ifdef MP-TOUTIAO|MP-WEIXIN
+const loginApi = 'https://www.zjtaoke.cn/login.php';
+// #endif
 const Services = {
+	// 微信/头条小程序登录
 	login(data, jiamiData) {
 		return request._post(`${loginApi}/Login/login`, data, jiamiData, 2);
+	},
+	// xcx_userxx微信/头条小程序存储信息
+	xcx_userxx(data, jiamiData) {
+		return request._post(`${loginApi}/Login/xcx_userxx`, data, jiamiData, 2);
 	},
 	//判断用户信息是否获取
 	userIf(data, jiamiData) {

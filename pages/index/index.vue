@@ -27,10 +27,10 @@
 					<!--已注册登录-->
 					<view class="headLogin-item" v-else-if="isThreeType == 0">
 						<view>
-							<image class="headLogin-img" :src="userInfoData.avatarUrl"></image>
+							<image class="headLogin-img" :src="userInfoData.user_pic"></image>
 						</view>
 						<view class="usernoLogin">
-							<view>{{userInfoData.nickName.length>5?userInfoData.nickName.substr(0,6)+'...':userInfoData.nickName}}</view>
+							<view>{{userInfoData.user_nickname.length>5?userInfoData.user_nickname.substr(0,6)+'...':userInfoData.user_nickname}}</view>
 						</view>
 					</view>
 				</view>
@@ -67,21 +67,9 @@
 			<view class="photograph">
 				<image @tap="goToQuestion" class="photographImg" src="/static/image/paizhao.png"></image>
 			</view>
-
-			<!--双十一活动-- 以后走这里 -->
-			<!-- <view class="shuangActivity" bindtap="goToHuodong">
-    <image src="../../image/jiaonang.png"></image>
-  </view> -->
-
-			<!--历史记录-->
-			<!-- <view class="historyFile">
-    有新消息！快来查看历史记录
-  </view> -->
 		</view>
 
 		<u-popup v-model="switchShow" mode="top" height="60%" @close="onClose">
-			<!-- <van-tree-select :items="items" height="360" :main-active-index="mainActiveIndex" :active-id="activeId" @click-nav="onClickNav"
-			 @click-item="onClickItem"></van-tree-select> -->
 			<tree-select :items='items' @click-nav="onClickNav" :main-active-index="mainActiveIndex" :active-id="activeId"
 			 @click-item="onClickItem"></tree-select>
 		</u-popup>
@@ -93,7 +81,9 @@
 				<view class="moduleWrite-text">请授权手机号，了解更多内容</view>
 				<view class="moduleWrite-button">
 					<button class="moduleWrite-btn colorQu" @tap="phoneModuleOff">取消</button>
+					<!-- #ifdef MP-WEIXIN|MP-TOUTIAO -->
 					<button class="moduleWrite-btn colorQue" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">确定</button>
+					<!-- #endif -->
 				</view>
 			</view>
 		</view>
@@ -135,7 +125,6 @@
 		components: {},
 		props: {},
 		onLoad: function() {
-			// this.judgeUserInfo()
 			// #ifdef MP-WEIXIN
 			// 小程序的原生菜单中显示分享按钮
 			uni.showShareMenu({
@@ -155,6 +144,11 @@
 			// });
 		},
 		methods: {
+			getPhoneNumberHandler(e) {
+				console.log({
+					e
+				})
+			},
 			// 集中获取storage的属性值
 			getStorages() {
 				var that = this;
@@ -186,15 +180,15 @@
 			examineLogin() {
 				let userInfoData = this.userInfoData;
 				console.log(userInfoData);
-				console.log(userInfoData.nickName);
-				if (userInfoData.nickName == '' || typeof userInfoData.nickName == 'undefined') {
+				console.log(userInfoData.user_nickname);
+				if (userInfoData.user_nickname == '' || typeof userInfoData.user_nickname == 'undefined') {
 					uni.showToast({
 						title: "请进行登录",
 						icon: 'none',
 						duration: 1000
 					});
 					this.isType = false
-				} else if (userInfoData.mobile == '' || typeof userInfoData.mobile == 'undefined') {
+				} else if (userInfoData.user_phone == '' || typeof userInfoData.user_phone == 'undefined') {
 					this.isType = false
 					this.phoneModuleShow = true
 				} else {
@@ -249,7 +243,6 @@
 							key: "newproject",
 							data: newproject
 						});
-						console.log('变更stor')
 					}
 				}
 			},
@@ -299,7 +292,6 @@
 			//跳转双十一活动页面
 			goToHuodong() {
 				console.log(this.userInfoData.mobile);
-
 				if (this.userInfoData.mobile != '') {
 					uni.navigateTo({
 						url: "/pages/huoDong/huoDong?phone=" + this.userInfoData.mobile
@@ -325,7 +317,7 @@
 					provider: 'weixin',
 					// #endif
 					success: res => {
-						console.log(res, '登录');
+						// console.log(res, '登录');
 						let code = res.code;
 						uni.getUserInfo({
 							// #ifdef APP-PLUS
@@ -340,44 +332,6 @@
 								let jiamiData = {
 									code: code
 								};
-								// 测试
-								userInfo.mobile = '15136298700'
-								this.userInfoData=res.userInfo
-								this.isThreeType = 0
-								// 测试
-								
-								// // 更改的
-								// this.reserveUserInfo('', userInfo);
-								// this.isThreeType = 0
-								// userInfo.mobile = '15136298700'
-								// uni.setStorage({
-								// 	key: "userInfoData",
-								// 	data: userInfo
-								// });
-								// 发送code获取用户信息
-								// Service.userIf(dataLists, jiamiData).then(res => {
-								// 	console.log({res}, '用户信息')
-								// 	if (res.event == 100) {
-								// 		uni.showToast({
-								// 			title: "登录成功",
-								// 			icon: 'none',
-								// 			duration: 1000
-								// 		});
-								// 		this.userInfoData = res.data
-								// 		console.log(this.userInfoData, 'userInfoData')
-								// 		this.wechat_id = res.data.id
-								// 		this.isThreeType = 0
-								// 		uni.setStorage({
-								// 			key: "userInfoData",
-								// 			data: res.data
-								// 		});
-								// 		//存储微信用户信息
-								// 		this.reserveUserInfo(res.data, userInfo);
-								// 		if (res.data.mobile == '') {
-								// 			this.phoneModuleShow = true
-								// 		}
-								// 	}
-								// });
 								let datas = {
 									// #ifdef MP-WEIXIN
 									'info[type]': 'weixin',
@@ -388,18 +342,43 @@
 									'info[xcx]': 'zkb',
 									'info[code]': code,
 								}
-
-								console.log(datas, 'datas')
 								Service.login(datas, datas).then(res => {
 									console.log({
 										res
 									}, '用户信息')
 									if (res.event == 100) {
+										console.log('dengluchengong')
 										uni.showToast({
 											title: "登录成功",
 											icon: 'none',
 											duration: 1000
 										});
+										let informationUser = res.data
+										informationUser.user_phone = '15136298700'
+										informationUser.user_nickname = userInfo.nickName
+										informationUser.user_pic = userInfo.avatarUrl
+										informationUser.user_gender = userInfo.gender
+										informationUser.country = userInfo.country
+										informationUser.city = userInfo.city
+										informationUser.province = userInfo.province
+										this.userInfoData = informationUser
+										this.wechat_id = informationUser.user_id
+										this.isThreeType = 0
+										uni.setStorage({
+											key: 'userInfoData',
+											data: informationUser,
+											success: function() {
+												console.log('success');
+											},
+											fail: function() {
+												console.log('fail')
+											}
+										});
+										//存储微信用户信息
+										this.reserveUserInfo(informationUser);
+										if (informationUser.user_phone == '') {
+											this.phoneModuleShow = true
+										}
 									}
 								});
 							},
@@ -410,31 +389,29 @@
 
 			},
 
+			// info[user_id]	是	string	用户id
+			// info[user_nickname]	是	string	微信名
+			// info[user_pic]	是	string	微信头像
+			// info[user_gender]	是	string	性别
+			// info[city]	是	string	城市
+			// info[province]	是	string	省份
+			// info[country]	是	string	国家
+
 			//存储微信用户信息
-			reserveUserInfo(data, userInfo) {
-				console.log(data, userInfo);
+			reserveUserInfo(data) {
+				console.log(data, '存储信息');
 				let dataLists = {
-					wechat_id: data.id,
-					// wechat_id: 109,
-					nickName: userInfo.nickName,
-					avatarUrl: userInfo.avatarUrl,
-					gender: userInfo.gender,
-					city: userInfo.city,
-					province: userInfo.province,
-					country: userInfo.country
+					"info[user_id]": data.user_id,
+					"info[user_nickname]": data.user_nickname,
+					"info[user_pic]": data.user_pic,
+					"info[user_gender]": data.user_gender,
+					"info[city]": data.city,
+					"info[province]": data.province,
+					"info[country]": data.country
 				};
-				let jiamiData = {
-					wechat_id: data.id,
-					// wechat_id: 109,
-					nickName: userInfo.nickName,
-					avatarUrl: userInfo.avatarUrl,
-					gender: userInfo.gender,
-					city: userInfo.city,
-					province: userInfo.province,
-					country: userInfo.country
-				};
-				Service.userxx(dataLists, jiamiData).then(res => {
-					console.log("userxx", res);
+				let jiamiData = dataLists
+				Service.xcx_userxx(dataLists, jiamiData).then(res => {
+					console.log("xcx_userxx", res);
 				});
 			},
 
@@ -451,9 +428,6 @@
 
 			//对项目数据进行处理
 			manageParent(list) {
-				console.log({
-					list
-				});
 				let obj = list.map(function(item) {
 					let cities = item.cities;
 					let objChild = cities.map(function(items) {

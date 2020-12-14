@@ -7,10 +7,10 @@
 
 				<view class="container-head">
 					<view>
-						<image class="head-img" :src="userInfoData.avatarUrl"></image>
+						<image class="head-img" :src="userInfoData.user_pic"></image>
 					</view>
 					<view class="head-text">
-						<view class="text-name">{{userInfoData.nickName}}</view>
+						<view class="text-name">{{userInfoData.user_nickname}}</view>
 						<view class="text-time">{{allLists.create_time}}</view>
 					</view>
 				</view>
@@ -87,7 +87,7 @@
 								<view class="commentPerson">
 									<view class="commentPerson-left">
 										<view>
-											<image class="personLeft-img" :src="userInfoData.avatarUrl"></image>
+											<image class="personLeft-img" :src="userInfoData.user_pic"></image>
 										</view>
 										<view class="personLeft-text">
 											<view>{{erplItem.wechatName}}</view>
@@ -180,12 +180,10 @@
 			var that = this;
 			uni.getStorage({
 				key: 'userInfoData',
-
-				success(res) {
+				success:function(res){
 					that.userInfoData = res.data
 					that.getDetailsList(); //获取详情页数据
 				}
-
 			});
 		},
 
@@ -215,16 +213,15 @@
 			//获取详情页数据
 			getDetailsList() {
 				let dataLists = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					id: this.answerId
 				};
 				let jiamiData = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					id: this.answerId
 				};
 				Service.circleDetails(dataLists, jiamiData).then(res => {
 					console.log(res);
-
 					if (res.event == 100) {
 						this.allLists = res.list
 					}

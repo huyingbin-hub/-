@@ -312,12 +312,10 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     var that = this;
     uni.getStorage({
       key: 'userInfoData',
-
       success: function success(res) {
         that.userInfoData = res.data;
         that.getDetailsList(); //获取详情页数据
       } });
-
 
   },
 
@@ -347,16 +345,15 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
     //获取详情页数据
     getDetailsList: function getDetailsList() {var _this = this;
       var dataLists = {
-        wechat_id: this.userInfoData.id,
+        wechat_id: this.userInfoData.user_id,
         id: this.answerId };
 
       var jiamiData = {
-        wechat_id: this.userInfoData.id,
+        wechat_id: this.userInfoData.user_id,
         id: this.answerId };
 
       Service.circleDetails(dataLists, jiamiData).then(function (res) {
         console.log(res);
-
         if (res.event == 100) {
           _this.allLists = res.list;
         }

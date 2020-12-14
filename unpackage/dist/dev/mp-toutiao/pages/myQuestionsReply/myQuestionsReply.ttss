@@ -163,21 +163,10 @@
 	        flex-wrap: wrap;
 	padding: 0 30rpx;
 }
-/* .van-uploader__wrapper {
-	width: 690rpx !important;
+.uni-input.data-v-273048a6{
+	padding: 30rpx 50rpx;
+	min-height: 150rpx;
 }
-
-.van-uploader__preview {
-	margin: 0 16rpx 16rpx 0 !important;
-}
-
-.van-uploader__preview:nth-child(4n) {
-	margin: 0 0 16rpx 0 !important;
-}
-
-.van-uploader__upload {
-	margin: 0 0 16rpx 0 !important;
-} */
 .popupBtn.data-v-273048a6 {
 	margin: 50rpx auto;
 	display: -webkit-box;

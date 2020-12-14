@@ -130,6 +130,7 @@
 
 				});
 			},
+			
 			//上传图片
 			afterRead(event, name) {
 				console.log({
@@ -178,14 +179,14 @@
 				}
 
 				let dataLists = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					lb_id: this.newproject.fuData.id,
 					kmlb: this.newproject.fuData.children.id,
 					wordse: this.message,
 					img: imgLists
 				};
 				let jiamiData = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					lb_id: this.newproject.fuData.id,
 					kmlb: this.newproject.fuData.children.id,
 					wordse: this.message,
@@ -193,7 +194,6 @@
 				};
 				Service.circle(dataLists, jiamiData).then(res => {
 					console.log(res);
-
 					if (res.event == 100) {
 						uni.showToast({
 							title: "发表成功",
@@ -207,46 +207,12 @@
 									});
 								}, 1000); //延迟时间
 							}
-						}); //双十一活动，以后走这里
-						// if (!this.data.isHuodong) {
-						//   this.getIntegral()
-						// }
+						}); 
 					} else {
 						uni.showToast({
 							title: res.msg,
 							icon: 'none',
 							duration: 1000
-						});
-					}
-				});
-			},
-
-			//双十一活动，中课帮）答疑获取积分
-			getIntegral() {
-				console.log(this.userInfoData);
-				let dataLists = {
-					mobile: this.userInfoData.mobile
-				};
-				let jiamiData = {
-					mobile: this.userInfoData.mobile
-				};
-				Service.answerIntegral(dataLists, jiamiData).then(res => {
-					console.log(res);
-
-					if (res.event == 100) {
-						// wx.showToast({
-						//   title: res.msg,
-						//   icon: 'none',
-						//   duration: 1000
-						// });
-						this.fenShow = true
-					} else {
-						// wx.setStorage({
-						//   key: "isHuodong",
-						//   data: true
-						// })
-						uni.navigateBack({
-							delta: 1
 						});
 					}
 				});

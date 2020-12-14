@@ -96,9 +96,6 @@ var components = {
   uCellGroup: function() {
     return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 142))
   },
-  uInput: function() {
-    return Promise.all(/*! import() | uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-input/u-input.vue */ 170))
-  },
   uUpload: function() {
     return Promise.all(/*! import() | uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-upload/u-upload.vue */ 149))
   },
@@ -168,6 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 // pages/myQuestionsReply/myQuestionsReply.js
 var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default =
@@ -209,9 +207,9 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
   },
 
   methods: {
-    //输入框内容
-    onChange: function onChange(event) {
-      this.message = event.detail;
+    //输入框内容 实时获取input的值
+    onKeyInput: function onKeyInput(event) {
+      this.message = event.detail.value;
     },
 
     //上传图片
@@ -281,7 +279,6 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
 
       Service.reply(dataLists, jiamiData).then(function (res) {
         console.log(res);
-
         if (res.event == 100) {
           uni.navigateBack({
             delta: 1 });

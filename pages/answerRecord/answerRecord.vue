@@ -139,12 +139,12 @@
 			//获得答疑历史记录
 			getAnswerRecordList() {
 				let dataLists = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					page: this.page,
 					size: this.size
 				};
 				let jiamiData = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					page: this.page,
 					size: this.size
 				};
