@@ -2,6 +2,8 @@
   "navigationBarTitleText": "中课帮",
   "usingComponents": {
     "u-popup": "/uview-ui/components/u-popup/u-popup",
-    "tree-select": "/components/tree-select/tree-select"
+    "tree-select": "/components/tree-select/tree-select",
+    "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
+    "u-cell-item": "/uview-ui/components/u-cell-item/u-cell-item"
   }
 }

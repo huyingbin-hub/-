@@ -43,30 +43,78 @@
 			"style": {
 				"navigationBarTitleText": "最新活动"
 			}
-		},
-		{
-			"path": "pages/login/userLogin",
-			"style": {
-				"navigationBarTitleText": "登录",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/login/register",
-			"style": {
-				"navigationBarTitleText": "注册",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/login/forgetPassword",
-			"style": {
-				"navigationBarTitleText": "忘记密码",
-				"navigationStyle": "custom"
-			}
 		}
-		
-	],
+		// 登录
+	    ,{
+            "path" : "pages/logins/logins",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "navigationStyle": "custom"
+            }
+        },
+		{
+		    "path" : "pages/logins/forgetPassword",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "忘记密码",
+		        "navigationStyle": "custom"
+		    }
+		},
+		{
+		    "path" : "pages/logins/register",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "注册账号",
+		        "navigationStyle": "custom"
+		    }
+		}
+        ,{
+            "path" : "pages/my/message",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息"
+            }
+        }
+		,{
+		    "path" : "pages/my/my",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "个人信息"
+		    }
+		}
+        ,{
+            "path" : "pages/my/install",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设置"
+            }
+        }
+        ,{
+            "path" : "pages/my/privacyAgreement",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "隐私协议"
+            }
+        }
+        ,{
+            "path" : "pages/my/changePassword",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改密码"
+            }
+            
+        }
+        ,{
+            "path" : "pages/protocol/protocol",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"style": "v2",
 	"sitemapLocation": "sitemap.json",
 	"globalStyle": {

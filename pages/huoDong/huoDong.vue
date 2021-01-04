@@ -18,10 +18,8 @@
 		 * 生命周期函数--监听页面加载
 		 */
 		onLoad: function(options) {
-			console.log(222);
 			var that = this;
 			let phone = options.phone;
-			console.log(phone);
 			that.url = 'https://www.zjtaoke.cn/eleven/?phone=' + phone + "&title=" + "3" // url: 'http://192.168.1.6:8080/?phone=' + phone + "&title=" + "3"
 		},
 
@@ -61,18 +59,14 @@
 		onShareAppMessage: function() {},
 		methods: {
 			getMsgFromWeb(e) {
-				console.log('getMsgFromWeb', e.detail.data);
 				let type = e.detail.data[0];
-				console.log(type);
 				this.jumpXCX(type);
 			},
 
 			onWebLoad(e) {
-				console.log('onWebLoad', e);
 			},
 
 			onWebError(e) {
-				console.error('onWebError', e);
 			}
 
 		}

@@ -7,9 +7,15 @@
     "pages/myQuestionsReply/myQuestionsReply",
     "pages/logs/logs",
     "pages/huoDong/huoDong",
-    "pages/login/userLogin",
-    "pages/login/register",
-    "pages/login/forgetPassword"
+    "pages/logins/logins",
+    "pages/logins/forgetPassword",
+    "pages/logins/register",
+    "pages/my/message",
+    "pages/my/my",
+    "pages/my/install",
+    "pages/my/privacyAgreement",
+    "pages/my/changePassword",
+    "pages/protocol/protocol"
   ],
   "subPackages": [],
   "window": {
@@ -25,5 +31,5 @@
   },
   "plugins": {},
   "usingComponents": {},
-  "sitemapLocation": "sitemap17.json"
+  "sitemapLocation": "sitemap96.json"
 }

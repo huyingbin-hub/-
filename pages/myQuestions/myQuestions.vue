@@ -7,10 +7,10 @@
 
 				<view class="container-head">
 					<view>
-						<image class="head-img" :src="userInfoData.avatarUrl"></image>
+						<image class="head-img" :src="userInfoData.user_pic"></image>
 					</view>
 					<view class="head-text">
-						<view class="text-name">{{userInfoData.nickName}}</view>
+						<view class="text-name">{{userInfoData.user_nickname}}</view>
 						<view class="text-time">{{allLists.create_time}}</view>
 					</view>
 				</view>
@@ -87,7 +87,7 @@
 								<view class="commentPerson">
 									<view class="commentPerson-left">
 										<view>
-											<image class="personLeft-img" :src="userInfoData.avatarUrl"></image>
+											<image class="personLeft-img" :src="userInfoData.user_pic"></image>
 										</view>
 										<view class="personLeft-text">
 											<view>{{erplItem.wechatName}}</view>
@@ -163,7 +163,6 @@
 				withShareTicket: true,
 				menus: ['shareAppMessage', 'shareTimeline']
 			});
-			console.log(options.id);
 			var that = this;
 			that.answerId = options.id
 		},
@@ -180,12 +179,10 @@
 			var that = this;
 			uni.getStorage({
 				key: 'userInfoData',
-
-				success(res) {
+				success:function(res){
 					that.userInfoData = res.data
 					that.getDetailsList(); //获取详情页数据
 				}
-
 			});
 		},
 
@@ -198,12 +195,7 @@
 			imgYu: function(event) {
 				var that = this;
 				var src = event.currentTarget.dataset.src; //获取data-src
-
 				var imgList = event.currentTarget.dataset.list; //获取data-list
-
-				console.log(src);
-				console.log(imgList); //图片预览
-
 				uni.previewImage({
 					current: src,
 					// 当前显示图片的http链接
@@ -215,16 +207,14 @@
 			//获取详情页数据
 			getDetailsList() {
 				let dataLists = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					id: this.answerId
 				};
 				let jiamiData = {
-					wechat_id: this.userInfoData.id,
+					wechat_id: this.userInfoData.user_id,
 					id: this.answerId
 				};
 				Service.circleDetails(dataLists, jiamiData).then(res => {
-					console.log(res);
-
 					if (res.event == 100) {
 						this.allLists = res.list
 					}
@@ -233,8 +223,6 @@
 
 			//去解决--页脚两个
 			solveQuestion(e) {
-				console.log(this.allLists);
-
 				if (this.allLists.state == 2) {
 					uni.showToast({
 						title: "问题已解决",
@@ -254,8 +242,6 @@
 					solve: type
 				};
 				Service.solve(dataLists, jiamiData).then(res => {
-					console.log(res);
-
 					if (res.event == 100) {
 						this.getDetailsList();
 						uni.showToast({
@@ -277,8 +263,6 @@
 					});
 					return;
 				}
-
-				console.log(e.currentTarget.dataset.item);
 				let item = encodeURIComponent(JSON.stringify(e.currentTarget.dataset.item));
 				let userInfoData = encodeURIComponent(JSON.stringify(this.userInfoData));
 				let allLists = encodeURIComponent(JSON.stringify(this.allLists));
@@ -302,7 +286,6 @@
 			afterRead(event) {
 				let that = this;
 				const file = event.detail.file;
-				console.log(file);
 				uni.uploadFile({
 					url: 'https://www.zjtaoke.cn/Trains2/uploadFile',
 					filePath: file.path,
@@ -310,17 +293,13 @@
 					formData: {},
 
 					success(res) {
-						console.log(res); // 上传完成需要更新 fileList
-
 						let data = res.data;
-						console.log(data);
 						const {
 							fileList = []
 						} = that;
 						fileList.push({
 							url: data
 						});
-						console.log(that.fileList);
 					},
 
 					fail(error) {}
@@ -330,11 +309,9 @@
 
 			//删除图片
 			deleteImg(event) {
-				console.log(event.detail.index);
 				let index = event.detail.index;
 				let zongList = this.fileList;
 				zongList.splice(index, 1);
-				console.log(zongList);
 				this.fileList = zongList
 			},
 
@@ -350,7 +327,6 @@
 				}
 
 				let item = e.currentTarget.dataset.item;
-				console.log(item);
 				let dataLists = {
 					p_id: item.id,
 					complain: 1
@@ -360,8 +336,6 @@
 					complain: 1
 				};
 				Service.complain(dataLists, jiamiData).then(res => {
-					console.log(res);
-
 					if (res.event == 100) {
 						this.getDetailsList(); //获取详情页数据
 						uni.showToast({

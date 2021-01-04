@@ -218,13 +218,13 @@
 	line-height: 42rpx;
 }
 .waitReplyColor.data-v-52680734 {
-	background-color: #EC6941;
+	background-color: #ec6941;
 }
 .fanKuiColor.data-v-52680734 {
-	background-color: #0998FF;
+	background-color: #0998ff;
 }
 .jieJueColor.data-v-52680734 {
-	background-color: #E4E4E4;
+	background-color: #e4e4e4;
 	color: #999999;
 }
 .item-title.data-v-52680734 {
@@ -239,8 +239,8 @@
 	margin: 0 auto;
 	width: 630rpx;
 	height: 250rpx;
-	border-top: 1px solid #F4F4F4;
-	border-bottom: 1px solid #F4F4F4;
+	border-top: 1px solid #f4f4f4;
+	border-bottom: 1px solid #f4f4f4;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }

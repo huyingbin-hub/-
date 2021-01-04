@@ -2,7 +2,49 @@ const config = require("../config.js");
 
 const request = require("../utils/request.js");
 
+// // #ifndef MP-TOUTIAO
+// const loginApi = 'http://test.zhongjianedu.com/login.php';
+// // #endif
+const loginApi = 'https://www.zjtaoke.cn/login.php';
 const Services = {
+	// 通用登录
+	login(data, jiamiData) {
+		return request._post(`${loginApi}/Login/login`, data, jiamiData, 2);
+	},
+	// xcx_userxx通用存储信息
+	xcx_userxx(data, jiamiData) {
+		return request._post(`${loginApi}/Login/xcx_userxx`, data, jiamiData, 2);
+	},
+	// 通用注册
+	register(data, jiamiData) {
+		return request._post(`${loginApi}/Login/register`, data, jiamiData, 2);
+	},
+	// 验证码接口
+	sendsms(data, jiamiData) {
+		return request._post(`${loginApi}/sms/sendsms`, data, jiamiData, 2);
+	},
+	//获取手机号
+	number(data, jiamiData) {
+		return request._post(`${loginApi}/Login/xcx_number`, data, jiamiData, 2);
+	},
+	//通用退出登录
+	logOut(data, jiamiData) {
+		return request._post(`${loginApi}/Login/logOut`, data, jiamiData, 2);
+	},
+	//通用忘记密码
+	forgetpwd(data, jiamiData) {
+		return request._post(`${loginApi}/Login/forgetpwd`, data, jiamiData, 2);
+	},
+	//通用修改密码
+	editpwd(data, jiamiData) {
+		return request._post(`${loginApi}/Login/editpwd`, data, jiamiData, 2);
+	},
+	
+	
+	
+	
+	
+	
 	//判断用户信息是否获取
 	userIf(data, jiamiData) {
 		return request._post(`${config.api}/Zkbxcx/userIf`, data, jiamiData, 2);
@@ -13,10 +55,6 @@ const Services = {
 		return request._post(`${config.api}/Zkbxcx/userxx`, data, jiamiData, 2);
 	},
 
-	//获取手机号
-	number(data, jiamiData) {
-		return request._post(`${config.api}/Zkbxcx/number`, data, jiamiData, 2);
-	},
 
 	//项目类别
 	parentAjax(data, jiamiData) {
@@ -37,7 +75,12 @@ const Services = {
 	circleHistory(data, jiamiData) {
 		return request._post(`${config.api}/Zkbxcx/circleHistory`, data, jiamiData, 2);
 	},
-
+	
+	//我的消息
+	circleFeedback(data, jiamiData) {
+		return request._post(`${config.api}/Zkbxcx/circleFeedback`, data, jiamiData, 2);
+	},
+	
 	//答疑详情
 	circleDetails(data, jiamiData) {
 		return request._post(`${config.api}/Zkbxcx/circleDetails`, data, jiamiData, 2);

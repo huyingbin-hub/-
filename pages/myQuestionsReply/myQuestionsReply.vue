@@ -4,8 +4,9 @@
 		<view>
 			<u-cell-group>
 				<!-- <van-field :value="message" type="textarea" placeholder="输入题目内容" :autosize="textAutosize" border="false" @change="onChange"></van-field> -->
-				<u-input :custom-style="{padding: '30rpx 50rpx',}" v-model="message" type="textarea" placeholder="输入题目内容" :auto-height="textAutosize"
-				 :border="false" />
+				<!-- <u-input :custom-style="{padding: '30rpx 50rpx',}" v-model="message" type="textarea" placeholder="输入题目内容" :auto-height="textAutosize"
+				 :border="false" /> -->
+				 <textarea class="uni-input" @blur="onKeyInput" placeholder="输入题目内容" type="textarea" auto-height/>
 			</u-cell-group>
 		</view>
 		<!--上传图片-->
@@ -58,56 +59,40 @@
 			that.item = item
 			that.userInfoData = userInfoData
 			that.allLists = allLists
-			console.log(that.item);
-			console.log(that.userInfoData);
-			console.log(that.allLists);
 		},
 
 		methods: {
-			//输入框内容
-			onChange(event) {
-				this.message = event.detail
+			//输入框内容 实时获取input的值
+			onKeyInput: function(event) {
+				this.message = event.detail.value
 			},
 
 			//上传图片
 			afterRead(event) {
-				console.log({
-					event
-				})
 				let that = this;
 				that.fileList = event
 			},
 
 			//删除图片
 			deleteImg(event) {
-				console.log(event);
 				// let index = event.detail.index;
 				let zongList = this.fileList;
 				zongList.splice(event, 1);
-				console.log(zongList);
 				this.fileList = zongList
 			},
 
 			//发表按钮事件
 			publishBtn() {
-				console.log("详情总数据", this.allLists);
-				console.log("用户数据", this.userInfoData);
-				console.log("评论数据", this.item);
-				console.log("内容", this.message);
-				console.log("图片", this.fileList);
 				let item = this.item;
 				let fileList = this.fileList;
 				let imgLists = "";
 				fileList.map(item => {
-					console.log(item);
 					imgLists += item.response + ",";
 				});
 
 				if (imgLists.length > 0) {
 					imgLists = imgLists.substr(0, imgLists.length - 1);
 				}
-
-				console.log(imgLists);
 
 				if (this.message == '' && this.fileList == '') {
 					uni.showToast({
@@ -135,8 +120,6 @@
 					img: imgLists
 				};
 				Service.reply(dataLists, jiamiData).then(res => {
-					console.log(res);
-
 					if (res.event == 100) {
 						uni.navigateBack({
 							delta: 1
@@ -161,21 +144,10 @@
 		padding: 0 30rpx;
 	}
 
-	/* .van-uploader__wrapper {
-		width: 690rpx !important;
+	.uni-input{
+		padding: 30rpx 50rpx;
+		min-height: 150rpx;
 	}
-
-	.van-uploader__preview {
-		margin: 0 16rpx 16rpx 0 !important;
-	}
-
-	.van-uploader__preview:nth-child(4n) {
-		margin: 0 0 16rpx 0 !important;
-	}
-
-	.van-uploader__upload {
-		margin: 0 0 16rpx 0 !important;
-	} */
 
 	.popupBtn {
 		margin: 50rpx auto;

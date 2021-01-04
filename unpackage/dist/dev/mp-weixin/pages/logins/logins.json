@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "登录",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-divider": "/uview-ui/components/u-divider/u-divider",
+    "u-modal": "/uview-ui/components/u-modal/u-modal"
+  }
+}

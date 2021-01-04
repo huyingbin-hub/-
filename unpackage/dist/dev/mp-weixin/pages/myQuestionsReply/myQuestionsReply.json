@@ -2,7 +2,6 @@
   "navigationBarTitleText": "我的提问",
   "usingComponents": {
     "u-cell-group": "/uview-ui/components/u-cell-group/u-cell-group",
-    "u-input": "/uview-ui/components/u-input/u-input",
     "u-upload": "/uview-ui/components/u-upload/u-upload",
     "u-button": "/uview-ui/components/u-button/u-button"
   }

@@ -1,5 +1,5 @@
 <template>
-	<view class="u-cell-box">
+	<view class="u-cell-box" :style="[cellStyle]">
 		<view class="u-cell-title" v-if="title" :style="[titleStyle]">
 			{{title}}
 		</view>
@@ -26,6 +26,12 @@
 			title: {
 				type: String,
 				default: ''
+			},
+			cellStyle:{
+				type: Object,
+				default () {
+					return {};
+				}
 			},
 			// 是否显示分组list上下边框
 			border: {
