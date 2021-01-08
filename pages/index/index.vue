@@ -203,7 +203,7 @@ export default {
 				key: 'userInfoData',
 				success(res) {
 					that.userInfoData = res.data;
-					if(res.data.user_nickname!==''&&res.data.user_phone!==''){
+					if (res.data.user_nickname !== '' && res.data.user_phone !== '') {
 						that.isThreeType = 0;
 					}
 					that.wechat_id = res.data.id;
@@ -321,10 +321,10 @@ export default {
 				console.log('用户点击了拒绝');
 			}
 		},
-		
+
 		// 获取手机号并向后台发送参数
 		getPhone(e) {
-			console.log('调用了getPhone')
+			console.log('调用了getPhone');
 			let that = this;
 			uni.login({
 				success: function(res) {
@@ -341,7 +341,7 @@ export default {
 						// #endif
 						'info[xcx]': 'zkb'
 					};
-					console.log({datas},'getNumber传参')
+					console.log({ datas }, 'getNumber传参');
 					Service.number(datas, datas).then(res => {
 						console.log({ res }, 'number');
 						if (res.event == 100) {

@@ -16,8 +16,8 @@
 				<view class="login-register" @click="register">注册账号</view>
 			</view>
 			<!-- 底部 -->
-			<view><u-divider color="#CCCCCC" half-width="75" fontSize="24" border-color="#CCCCCC">其他方式登录</u-divider></view>
-			<view class="sanFang-icon"><image @click="wxLogin" src="../../static/images/login/wx.png" mode=""></image></view>
+			<!-- <view><u-divider color="#CCCCCC" half-width="75" fontSize="24" border-color="#CCCCCC">其他方式登录</u-divider></view>
+			<view class="sanFang-icon"><image @click="wxLogin" src="../../static/images/login/wx.png" mode=""></image></view> -->
 		</view>
 		<!--协议同意弹窗-->
 		<u-modal
@@ -147,7 +147,9 @@ export default {
 				}else{
 					this.$u.toast(res.msg)
 				}
-			});
+			}).then(()=>{
+				
+			})
 		},
 
 		// 存储用户信息  目前不调用  胡  2020/12/26
