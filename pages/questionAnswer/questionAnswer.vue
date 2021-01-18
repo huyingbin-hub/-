@@ -16,8 +16,8 @@
 			<view class="uploadPictures">
 				<!-- :custom-btn="true" :deletable="true" ref="uUpload" :show-progress="false" :file-list="fileList"
 				 :show-upload-list="true" :action="action" max-count="1" auto-upload @on-uploaded="afterRead" -->
-				<u-upload :auto-upload="true" ref="uUpload" :action="action" :file-list="fileList" max-count="9" deletable
-				 :show-upload-list="true" @on-uploaded="afterRead" @on-remove="deleteImg"></u-upload>
+				<u-upload :auto-upload="true" ref="uUpload" :action="action" :file-list="fileList" max-count="3" deletable
+				 :show-upload-list="true" @on-uploaded="afterRead" @on-progress="progress"  @on-remove="deleteImg"></u-upload>
 			</view>
 
 			<!--科目展示-->
@@ -81,6 +81,7 @@
 				isSelectSubject: false,
 				userInfoData: "",
 				action: "https://www.zjtaoke.cn/Trains2/uploadFile",
+				pictureJudgment:false,
 			};
 		},
 
@@ -130,12 +131,27 @@
 				});
 			},
 			
-			//上传图片
+			//所有图片上传完毕触发
 			afterRead(event, name) {
 				let that = this;
+				console.log(event)
 				that.fileList = event
+				this.pictureJudgment=true
 			},
-
+			
+			// 图片上传过程中的进度变化过程触发
+			progress(res, index, lists, name){
+				// console.log(res, index, lists, name,'res,  index, lists, name图片上传过程中的进度变化过程触发')
+				// console.log(res.progress,'res')
+				// console.log(index,'index')
+				// console.log(lists,'lists')
+				// console.log(name,'name')
+					
+				if(res.progress!==100){
+					this.pictureJudgment=false
+				}
+			},
+			
 			//删除图片
 			deleteImg(event) {
 				// let index = event.detail.index;
@@ -158,6 +174,14 @@
 				if (this.message == '' && this.fileList == '') {
 					uni.showToast({
 						title: "请输入答疑内容或者上传图片",
+						icon: 'none',
+						duration: 1000
+					});
+					return;
+				}
+				if(this.pictureJudgment==false){
+					uni.showToast({
+						title: "请重试",
 						icon: 'none',
 						duration: 1000
 					});

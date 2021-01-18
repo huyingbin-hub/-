@@ -92,18 +92,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  uPopup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 174))
-  },
-  treeSelect: function() {
-    return __webpack_require__.e(/*! import() | components/tree-select/tree-select */ "components/tree-select/tree-select").then(__webpack_require__.bind(null, /*! @/components/tree-select/tree-select.vue */ 181))
-  },
-  uCellGroup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 188))
-  },
-  uCellItem: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-item/u-cell-item */ "uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-item/u-cell-item.vue */ 195))
+var components
+try {
+  components = {
+    uPopup: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 174))
+    },
+    treeSelect: function() {
+      return __webpack_require__.e(/*! import() | components/tree-select/tree-select */ "components/tree-select/tree-select").then(__webpack_require__.bind(null, /*! @/components/tree-select/tree-select.vue */ 181))
+    },
+    uCellGroup: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 188))
+    },
+    uCellItem: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-item/u-cell-item */ "uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-item/u-cell-item.vue */ 195))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -302,9 +321,9 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
   },
   methods: {
     // 测试清除缓存 2020/12/29 字节测试
-    // clear(){
-    // 	uni.clearStorage()
-    // },
+    clear: function clear() {
+      uni.clearStorage();
+    },
     // 查看头像大图
     lookUserPic: function lookUserPic(pic) {
       uni.previewImage({
@@ -484,15 +503,28 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
 
 
 
-            'info[xcx]': 'zkb' };
+            'info[xcx]': 'zkb',
+
+            'info[client_id]': that.userInfoData.client_id };
+
 
           console.log({ datas: datas }, 'getNumber传参');
           Service.number(datas, datas).then(function (res) {
             console.log({ res: res }, 'number');
             if (res.event == 100) {
+              var phoneData;
+              uni.getStorage({
+                key: 'userInfoData',
+                success: function success(res) {
+                  phoneData = res.data;
+                } });
+
+              var userInfo = res.data.userInfo;
+              userInfo.user_nickname = phoneData.user_nickname;
+              userInfo.user_pic = phoneData.user_pic;
               uni.setStorage({
                 key: 'userInfoData',
-                data: res.data.userInfo });
+                data: userInfo });
 
               that.isThreeType = 0;
               that.user_phone = res.data;
@@ -556,9 +588,9 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
                   informationUser['country'] = userInfo.country;
                   informationUser['city'] = userInfo.city;
                   informationUser['province'] = userInfo.province;
-                  if (informationUser.user_phone == '' && informationUser.user_nickname == '') {
+                  if (informationUser.user_phone == '' || informationUser.user_nickname == '') {
                     _this.isThreeType = 1;
-                    _this.reserveUserInfo(informationUser); //存储用户信息
+
                   } else {
                     _this.isThreeType = 0;
                     uni.setStorage({
@@ -566,10 +598,7 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
                       data: informationUser });
 
                   }
-                  if (informationUser.user_phone == '' && informationUser.user_nickname !== '') {
-                    _this.isThreeType = 1;
-                    _this.reserveUserInfo(informationUser); //存储用户信息
-                  }
+                  _this.reserveUserInfo(informationUser); //存储用户信息
                   _this.userInfoData = informationUser;
                   _this.wechat_id = informationUser.user_id;
                 }
@@ -603,7 +632,10 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
         'info[user_gender]': data.user_gender,
         'info[city]': data.city,
         'info[province]': data.province,
-        'info[country]': data.country };
+        'info[country]': data.country,
+
+        'info[client_id]': data.client_id };
+
 
       var jiamiData = dataLists;
       Service.xcx_userxx(dataLists, jiamiData).then(function (res) {});

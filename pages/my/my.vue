@@ -103,10 +103,13 @@ export default {
 				'info[type]': 'weixin',
 				// #endif
 				// #ifdef MP-TOUTIAO
-				'info[type]': 'zijie'
+				'info[type]': 'zijie',
 				// #endif
 				// #ifdef APP-PLUS
-				'info[type]': 'app'
+				'info[type]': 'app',
+				// #endif
+				// #ifdef MP-TOUTIAO||MP-WEIXIN
+				'info[client_id]': data.client_id,
 				// #endif
 			};
 			let that = this;

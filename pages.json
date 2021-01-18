@@ -17,7 +17,7 @@
 		{
 			"path": "pages/answerRecord/answerRecord",
 			"style": {
-				"navigationBarTitleText": "我的问题"
+				"navigationBarTitleText": ""
 			}
 		},
 		{

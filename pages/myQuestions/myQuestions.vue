@@ -90,7 +90,7 @@
 											<image class="personLeft-img" :src="userInfoData.user_pic"></image>
 										</view>
 										<view class="personLeft-text">
-											<view>{{erplItem.wechatName}}</view>
+											<view>{{userInfoData.user_nickname}}</view>
 											<view>{{erplItem.create_time}}</view>
 										</view>
 									</view>

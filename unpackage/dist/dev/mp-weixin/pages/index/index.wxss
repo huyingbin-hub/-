@@ -42,8 +42,7 @@
 .my-Personal .my-headP image.data-v-57280228 {
   width: 108rpx;
   height: 108rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 }
 .my-Personal .my-name.data-v-57280228 {
   position: absolute;
@@ -100,8 +99,7 @@
   width: 80rpx;
   height: 80rpx;
   margin-right: 16rpx;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 }
 .noLogin button.data-v-57280228::after {
   border: none;
@@ -136,8 +134,7 @@
   width: 150rpx !important;
   height: 60rpx;
   background: #ffffff;
-  -webkit-border-radius: 5rpx;
-          border-radius: 5rpx;
+  border-radius: 5rpx;
   padding: 0 !important;
   margin-top: -3rpx;
   color: #252525;
@@ -150,8 +147,7 @@
   width: 200rpx !important;
   height: 60rpx;
   background: #ffffff;
-  -webkit-border-radius: 5rpx;
-          border-radius: 5rpx;
+  border-radius: 5rpx;
   padding: 0 !important;
   margin-top: 5rpx;
   color: #252525;
@@ -300,8 +296,7 @@
   left: 115rpx;
   top: 300rpx;
   background-color: #fff;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
 }
 .moduleWrite-text.data-v-57280228 {
   font-size: 26rpx;
@@ -318,8 +313,7 @@
 }
 .moduleWrite-btn.data-v-57280228 {
   background-color: #fff;
-  -webkit-border-radius: 25rpx;
-          border-radius: 25rpx;
+  border-radius: 25rpx;
 }
 .colorQu.data-v-57280228 {
   color: #94918f;

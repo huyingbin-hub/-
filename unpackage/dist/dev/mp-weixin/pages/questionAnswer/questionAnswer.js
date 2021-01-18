@@ -92,24 +92,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components = {
-  uCellGroup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 188))
-  },
-  uUpload: function() {
-    return Promise.all(/*! import() | uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-upload/u-upload.vue */ 202))
-  },
-  uIcon: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 209))
-  },
-  uButton: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-button/u-button */ "uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-button/u-button.vue */ 216))
-  },
-  uPopup: function() {
-    return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 174))
-  },
-  treeSelect: function() {
-    return __webpack_require__.e(/*! import() | components/tree-select/tree-select */ "components/tree-select/tree-select").then(__webpack_require__.bind(null, /*! @/components/tree-select/tree-select.vue */ 181))
+var components
+try {
+  components = {
+    uCellGroup: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-cell-group/u-cell-group */ "uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-cell-group/u-cell-group.vue */ 188))
+    },
+    uUpload: function() {
+      return Promise.all(/*! import() | uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-upload/u-upload.vue */ 202))
+    },
+    uIcon: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-icon/u-icon */ "uview-ui/components/u-icon/u-icon").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-icon/u-icon.vue */ 209))
+    },
+    uButton: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-button/u-button */ "uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-button/u-button.vue */ 216))
+    },
+    uPopup: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-popup/u-popup */ "uview-ui/components/u-popup/u-popup").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-popup/u-popup.vue */ 174))
+    },
+    treeSelect: function() {
+      return __webpack_require__.e(/*! import() | components/tree-select/tree-select */ "components/tree-select/tree-select").then(__webpack_require__.bind(null, /*! @/components/tree-select/tree-select.vue */ 181))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
   }
 }
 var render = function() {
@@ -231,7 +250,8 @@ var MD5 = __webpack_require__(/*! ../../utils/md5 */ 11);var _default =
       twoText: '', //科目
       isSelectSubject: false,
       userInfoData: "",
-      action: "https://www.zjtaoke.cn/Trains2/uploadFile" };
+      action: "https://www.zjtaoke.cn/Trains2/uploadFile",
+      pictureJudgment: false };
 
   },
 
@@ -281,10 +301,25 @@ var MD5 = __webpack_require__(/*! ../../utils/md5 */ 11);var _default =
 
     },
 
-    //上传图片
+    //所有图片上传完毕触发
     afterRead: function afterRead(event, name) {
       var that = this;
+      console.log(event);
       that.fileList = event;
+      this.pictureJudgment = true;
+    },
+
+    // 图片上传过程中的进度变化过程触发
+    progress: function progress(res, index, lists, name) {
+      // console.log(res, index, lists, name,'res,  index, lists, name图片上传过程中的进度变化过程触发')
+      // console.log(res.progress,'res')
+      // console.log(index,'index')
+      // console.log(lists,'lists')
+      // console.log(name,'name')
+
+      if (res.progress !== 100) {
+        this.pictureJudgment = false;
+      }
     },
 
     //删除图片
@@ -309,6 +344,14 @@ var MD5 = __webpack_require__(/*! ../../utils/md5 */ 11);var _default =
       if (this.message == '' && this.fileList == '') {
         uni.showToast({
           title: "请输入答疑内容或者上传图片",
+          icon: 'none',
+          duration: 1000 });
+
+        return;
+      }
+      if (this.pictureJudgment == false) {
+        uni.showToast({
+          title: "请重试",
           icon: 'none',
           duration: 1000 });
 

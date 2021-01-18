@@ -82,7 +82,7 @@
 						<u-cell-item class="uCellItem" @click="myUser" title="个人信息" :arrow="false">
 							<image src="../../static/my/icon_xinxi.png" slot="icon" mode=""></image>
 						</u-cell-item>
-						<u-cell-item class="uCellItem" @click="message" title="我的消息" :arrow="false">
+						<u-cell-item class="uCellItem" @click="message" title="我的答疑" :arrow="false">
 							<image src="../../static/my/icon_xiaoxi.png" slot="icon" mode=""></image>
 							<!-- <u-badge count="99" :absolute="false" slot="right-icon"></u-badge> -->
 						</u-cell-item>
@@ -157,9 +157,9 @@ export default {
 	},
 	methods: {
 		// 测试清除缓存 2020/12/29 字节测试
-		// clear(){
-		// 	uni.clearStorage()
-		// },
+		clear(){
+			uni.clearStorage()
+		},
 		// 查看头像大图
 		lookUserPic(pic) {
 			uni.previewImage({
@@ -339,15 +339,28 @@ export default {
 						// #ifdef MP-TOUTIAO
 						'info[type]': 'zijie',
 						// #endif
-						'info[xcx]': 'zkb'
+						'info[xcx]': 'zkb',
+						// #ifdef MP-TOUTIAO||MP-WEIXIN
+						'info[client_id]': that.userInfoData.client_id
+						// #endif
 					};
 					console.log({ datas }, 'getNumber传参');
 					Service.number(datas, datas).then(res => {
 						console.log({ res }, 'number');
 						if (res.event == 100) {
+							let phoneData
+							uni.getStorage({
+							    key: 'userInfoData',
+							    success: function (res) {
+									phoneData=res.data
+							    }
+							});
+							let userInfo=res.data.userInfo
+							userInfo.user_nickname=phoneData.user_nickname
+							userInfo.user_pic=phoneData.user_pic
 							uni.setStorage({
 								key: 'userInfoData',
-								data: res.data.userInfo
+								data: userInfo
 							});
 							that.isThreeType = 0;
 							that.user_phone = res.data;
@@ -411,9 +424,9 @@ export default {
 									informationUser['country'] = userInfo.country;
 									informationUser['city'] = userInfo.city;
 									informationUser['province'] = userInfo.province;
-									if (informationUser.user_phone == '' && informationUser.user_nickname == '') {
+									if (informationUser.user_phone == '' || informationUser.user_nickname == '') {
 										this.isThreeType = 1;
-										this.reserveUserInfo(informationUser); //存储用户信息
+
 									} else {
 										this.isThreeType = 0;
 										uni.setStorage({
@@ -421,10 +434,7 @@ export default {
 											data: informationUser
 										});
 									}
-									if (informationUser.user_phone == '' && informationUser.user_nickname !== '') {
-										this.isThreeType = 1;
-										this.reserveUserInfo(informationUser); //存储用户信息
-									}
+									this.reserveUserInfo(informationUser); //存储用户信息
 									this.userInfoData = informationUser;
 									this.wechat_id = informationUser.user_id;
 								}
@@ -458,7 +468,10 @@ export default {
 				'info[user_gender]': data.user_gender,
 				'info[city]': data.city,
 				'info[province]': data.province,
-				'info[country]': data.country
+				'info[country]': data.country,
+				// #ifdef MP-TOUTIAO||MP-WEIXIN
+				'info[client_id]': data.client_id,
+				// #endif
 			};
 			let jiamiData = dataLists;
 			Service.xcx_userxx(dataLists, jiamiData).then(res => {});

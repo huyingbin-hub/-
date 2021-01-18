@@ -125,7 +125,7 @@ export default {
 						res.objList.user_nickname = res.objList.user_phone;
 					}
 					res.objList.user_phone = this.form.phone;
-					this.$u.toast('登录成功!');
+					this.$u.toast('登录成功');
 					uni.setStorage({
 						key: 'userInfoData',
 						data: res.objList,

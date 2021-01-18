@@ -206,6 +206,15 @@ var Service = __webpack_require__(/*! ../../Services/services */ 8);var _default
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline'] });
 
+    if (this.state == 1) {
+      uni.setNavigationBarTitle({
+        title: '我的答疑' });
+
+    } else if (this.state == 0) {
+      uni.setNavigationBarTitle({
+        title: '历史记录' });
+
+    }
   },
 
   /**

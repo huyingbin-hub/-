@@ -30,8 +30,8 @@
 					<view class="operation-time">{{ item.up_sj }}</view>
 					<view class="operation-right">
 						<view class="operation-tu"><image class="operation-img" src="/static/image/paizhao.png"></image></view>
-						<view v-if="item.state == 0" class="operation-btn">去回复</view>
-						<view v-else-if="item.state == 1" class="operation-btn">去反馈</view>
+						<view v-if="item.state == 0" class="operation-btn">待回复</view>
+						<view v-else-if="item.state == 1" class="operation-btn">待反馈</view>
 						<view v-else-if="item.state == 2" class="operation-btn">已解决</view>
 					</view>
 				</view>
@@ -74,6 +74,15 @@ export default {
 			withShareTicket: true,
 			menus: ['shareAppMessage', 'shareTimeline']
 		});
+		if (this.state == 1) {
+			uni.setNavigationBarTitle({
+				title: '我的答疑'
+			});
+		} else if (this.state == 0) {
+			uni.setNavigationBarTitle({
+				title: '历史记录'
+			});
+		}
 	},
 
 	/**

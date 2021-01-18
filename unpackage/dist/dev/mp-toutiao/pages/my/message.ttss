@@ -32,8 +32,7 @@
   width: 298rpx;
   height: 40rpx;
   background-color: #dddddd;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
+  border-radius: 8px;
   line-height: 40rpx;
   text-align: center;
   font-size: 24rpx;
@@ -47,10 +46,8 @@
   height: 175rpx;
   margin: 0 30rpx 0 30rpx;
   background: #ffffff;
-  -webkit-border-radius: 8px;
-          border-radius: 8px;
-  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 .message-count .message-count-title.data-v-989fb446 {
   padding: 40rpx 0 18rpx 41rpx;
